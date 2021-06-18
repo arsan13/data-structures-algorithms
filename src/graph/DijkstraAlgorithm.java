@@ -4,31 +4,31 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-class Node implements Comparator<Node>
-{
-    private int vertex;
-    private int weight;
-    
-    Node(int _v, int _w) { vertex = _v; weight = _w; }
-    
-    Node() {}
-    
-    int getVertex() { return vertex; }
-    int getWeight() { return weight; }
-    
-    @Override
-    public int compare(Node node1, Node node2) 
-    { 
-    	return node1.weight - node2.weight;
-//        if (node1.weight < node2.weight) 
-//            return -1; 
-//        if (node1.weight > node2.weight) 
-//            return 1; 
-//        return 0; 
-    } 
-}
-
 public class DijkstraAlgorithm {
+	
+	static class Node implements Comparator<Node>
+	{
+	    private int vertex;
+	    private int weight;
+	    
+	    Node(int _v, int _w) { vertex = _v; weight = _w; }
+	    
+	    Node() {}
+	    
+	    int getVertex() { return vertex; }
+	    int getWeight() { return weight; }
+	    
+	    @Override
+	    public int compare(Node node1, Node node2) 
+	    { 
+	    	return node1.weight - node2.weight;
+//	        if (node1.weight < node2.weight) 
+//	            return -1; 
+//	        if (node1.weight > node2.weight) 
+//	            return 1; 
+//	        return 0; 
+	    } 
+	}
 	
 	void shortestPath(int src, ArrayList<ArrayList<Node>> adj, int n) {
 		
