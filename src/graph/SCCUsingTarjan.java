@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Stack;
 
-public class StronglyConnectedComponentsUsingTarjan {
+public class SCCUsingTarjan {
 
-	
 	private static void dfs(int u, int[] disc, int[] low, Stack<Integer> stack, boolean[] presentInStack, ArrayList<ArrayList<Integer>> adj, int time) {
 		
 		disc[u] = low[u] = time++;
@@ -68,19 +67,10 @@ public class StronglyConnectedComponentsUsingTarjan {
 			adj.add(new ArrayList<Integer>());
 		
 		adj.get(0).add(1);
-		adj.get(1).add(0);
-
-		adj.get(0).add(2);
-		adj.get(2).add(0);
-
 		adj.get(1).add(2);
-		adj.get(2).add(1);
-
+		adj.get(2).add(0);
 		adj.get(1).add(3);
-		adj.get(3).add(1);
-
 		adj.get(3).add(4);
-		adj.get(4).add(3);
 		
 		findComponents(adj,n);
 	}

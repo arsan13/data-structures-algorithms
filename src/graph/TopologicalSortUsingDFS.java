@@ -3,7 +3,7 @@ package graph;
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class TopologicalSort {
+public class TopologicalSortUsingDFS {
 	
 	private static void topologicalSortUtil(int src, ArrayList<ArrayList<Integer>> adj, boolean[] visited,
 			Stack<Integer> stack) {
