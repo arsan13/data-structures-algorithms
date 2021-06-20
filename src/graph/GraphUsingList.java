@@ -69,70 +69,7 @@ public class GraphUsingList {
 
 		return false;
 	}
-
-	// get min distance
-	public int bfsShortestpath(int src, int dest) {
-		Queue<Integer> queue = new LinkedList<>();
-
-		boolean visited[] = new boolean[adj.length];
-		int parent[] = new int[adj.length];
-
-		queue.add(src);
-		visited[src] = true;
-		parent[src] = -1;
-
-		while (!queue.isEmpty()) {
-			int current = queue.poll();
-			if (current == dest)
-				break;
-
-			for (int neighbour : adj[current]) {
-				if (!visited[neighbour]) {
-					queue.add(neighbour);
-					visited[neighbour] = true;
-					parent[neighbour] = current;
-				}
-			}
-		}
-
-		int current = dest;
-		int dist = 0;
-
-		while (parent[current] != -1) {
-			System.out.print(current + " --> ");
-			current = parent[current];
-			dist++;
-		}
-		System.out.print(current + "\n");
-
-		return dist;
-	}
 	
-	public void bfsShortestPathDist(int src, int dest) {
-		
-		Queue<Integer> queue = new LinkedList<>();
-		int dist[] = new int[adj.length];
-		
-		for(int i = 0; i < dist.length; i++)
-			dist[i] = Integer.MAX_VALUE;
-		
-		queue.add(src);
-		dist[src] = 0;
-		
-		while(!queue.isEmpty()) {
-			
-			int current = queue.poll();
-			
-			for(int neighbour : adj[current]) {
-				if(dist[current] + 1 < dist[neighbour])
-					dist[neighbour] = dist[current] + 1;
-				queue.add(neighbour);
-			}
-		}
-		
-		for(int i = 0; i < dist.length; i++)
-			System.out.println(i + " " + dist[i]);
-	}
 
 	private boolean dfsUtil(int src, int dest, boolean[] visited) {
 
@@ -223,7 +160,6 @@ public class GraphUsingList {
 		System.out.println("\nDFS TRAVERSAL");
 		graph.dfsStack();
 		
-		graph.bfsShortestPathDist(0, 3);
 	}
 
 }
