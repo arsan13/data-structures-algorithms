@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Stack;
 
+//Find strongly connected components
 public class SCCUsingTarjan {
 
 	private static void dfs(int u, int[] disc, int[] low, Stack<Integer> stack, boolean[] presentInStack, ArrayList<ArrayList<Integer>> adj, int time) {

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Stack;
 
+// Find strongly connected components
 public class SCCUsingKosaraju {
 
 	private static void dfs(int u, Stack<Integer> stack, ArrayList<ArrayList<Integer>> adj, boolean[] visited) {
