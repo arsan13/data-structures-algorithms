@@ -6,27 +6,22 @@ import java.util.PriorityQueue;
 
 public class DijkstraAlgorithm {
 	
-	static class Node implements Comparator<Node>
+	static class Node implements Comparable<Node>
 	{
 	    private int vertex;
 	    private int weight;
 	    
-	    Node(int _v, int _w) { vertex = _v; weight = _w; }
-	    
-	    Node() {}
-	    
+	    Node(int _v, int _w) { 
+	    	vertex = _v; 
+	    	weight = _w; 
+	    }
+	    	    
 	    int getVertex() { return vertex; }
 	    int getWeight() { return weight; }
 	    
 	    @Override
-	    public int compare(Node node1, Node node2) 
-	    { 
-	    	return node1.weight - node2.weight;
-//	        if (node1.weight < node2.weight) 
-//	            return -1; 
-//	        if (node1.weight > node2.weight) 
-//	            return 1; 
-//	        return 0; 
+	    public int compareTo(Node other) 	    { 
+	    	return this.weight - other.weight;
 	    } 
 	}
 	
@@ -38,12 +33,12 @@ public class DijkstraAlgorithm {
 		for(int i = 0; i < n; i++)
 			dist[i] = Integer.MAX_VALUE;
 		
-//		PriorityQueue<Node> minQueue = new PriorityQueue<>();
-		PriorityQueue<Node> minQueue = new PriorityQueue<Node>(n, new Node());
+		PriorityQueue<Node> minQueue = new PriorityQueue<Node>();
 		
 		dist[src] = 0;
+		parent[src] = -1;
 		minQueue.add(new Node(src, 0));
-		
+	 	
 		while(!minQueue.isEmpty()) {
 			Node node = minQueue.poll();
 			
@@ -56,11 +51,13 @@ public class DijkstraAlgorithm {
 			}
 		}
 		
+		System.out.print("Distance: ");
 		for(int i = 0; i < n; i++) 
 			System.out.print(dist[i] + " ");
 		
 		System.out.println();
 		
+		System.out.print("Parent:  ");
 		for(int i = 0; i < n; i++)
 			System.out.print(parent[i] + " ");
 	}
