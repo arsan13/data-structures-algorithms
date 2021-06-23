@@ -2,7 +2,9 @@ package graph;
 
 import java.util.*;
 
-public class RatInAMaze {
+// Flood fill | Rat in a Maze | Fill Color
+
+public class FloodFill {
 
 	private static void dfs(int i, int j, int[][] m, int n, boolean[][] visited, String str, ArrayList<String> list) {
 
