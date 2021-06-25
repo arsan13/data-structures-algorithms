@@ -61,17 +61,17 @@ public class PrimAlgorithm {
 	
 	static void primAlgUsingBrute(ArrayList<ArrayList<Node>> adj, int n) {
 		
-		int key[] = new int[n];
+		int weight[] = new int[n];
 		int parent[] = new int[n];
 		boolean mst[] = new boolean[n];
 		
 		for(int i = 0; i < n; i++) {
-			key[i] = Integer.MAX_VALUE;
+			weight[i] = Integer.MAX_VALUE;
 			parent[i] = -1;
 			mst[i] = false;
 		}
 		
-		key[0] = 0; //source
+		weight[0] = 0; //source
 		
 		for(int i = 0; i < n-1; i++) {  // traverse for n-1 times, since a spanning tree has that many edges
 			
@@ -79,8 +79,8 @@ public class PrimAlgorithm {
 			int min = Integer.MAX_VALUE;
 			int u = 0;
 			for(int v = 0; v < n; v++) {
-				if(mst[v] == false && key[v] < min) { // if not visited and has least weight
-					min = key[v];
+				if(mst[v] == false && weight[v] < min) { // if not visited and has least weight
+					min = weight[v];
 					u = v;
 				}
 			}
@@ -89,16 +89,16 @@ public class PrimAlgorithm {
 			
 			// explore neighbours
 			for(Node v : adj.get(u)) {
-				if(mst[v.vertex] == false && v.weight < key[v.vertex]) {
+				if(mst[v.vertex] == false && v.weight < weight[v.vertex]) {
 					parent[v.vertex] = u;			// update weight
-					key[v.vertex] = v.weight;		// update parent
+					weight[v.vertex] = v.weight;		// update parent
 				}
 			}
 		}
 		
 		System.out.println("Vertex|Parent|Weight");
 		for(int i = 0; i < n; i++)
-			System.out.println(i + "\t" + parent[i] + "\t" + key[i]);
+			System.out.println(i + "\t" + parent[i] + "\t" + weight[i]);
 	}
 	
 	public static void main(String[] args) {

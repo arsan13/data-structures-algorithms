@@ -1,4 +1,4 @@
-package graph;
+package graph.tarjan;
 
 import java.util.ArrayList;
 import java.util.Arrays;
