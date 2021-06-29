@@ -62,7 +62,7 @@ public class WeightedGraphUsingList {
         graph.addEdge(4, 1, 4);
         graph.addEdge(4, 5, 6);
         
-//        graph.printGraph();
+        graph.printGraph();
         		
 	}
 }

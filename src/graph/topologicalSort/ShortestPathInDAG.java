@@ -33,11 +33,10 @@ public class ShortestPathInDAG {
 		dist[src] = 0;
 		
 //		3. Traverse each element in the stack and update dist. 
-//			Traverse a element only if its dist is updated by its previous nodes i.e., dist[u] != INF
 		while(!stack.isEmpty()) {
 			int u = stack.pop();
 			
-			if(dist[u] != Integer.MAX_VALUE) {
+			if(dist[u] != Integer.MAX_VALUE) {	// Traverse a element only if its dist is updated by its previous nodes
 				for(Pair v : adj.get(u)) {
 					if(dist[u] + v.weight < dist[v.vertex])
 						dist[v.vertex] = dist[u] + v.weight;

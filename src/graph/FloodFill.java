@@ -33,15 +33,13 @@ public class FloodFill {
 	public static ArrayList<String> findPath(int[][] m, int n) {
 
 		ArrayList<String> list = new ArrayList<>();
-
-		if (m[0][0] == 0 || m[n - 1][n - 1] == 0)
-			return list;
-
 		boolean[][] visited = new boolean[n][n];
 
-		dfs(0, 0, m, n, visited, "", list);
-		Collections.sort(list);
-
+		if (m[0][0] != 0 || m[n - 1][n - 1] != 0) {
+			dfs(0, 0, m, n, visited, "", list);
+			Collections.sort(list);
+		}
+		
 		return list;
 	}
 

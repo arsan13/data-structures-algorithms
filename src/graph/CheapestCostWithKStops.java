@@ -25,7 +25,8 @@ public class CheapestCostWithKStops {
 		
 		Map<Integer, Map<Integer, Integer>> prices = new HashMap<>();
         for (int[] f : flights) {
-            if (!prices.containsKey(f[0])) prices.put(f[0], new HashMap<>());
+            if (!prices.containsKey(f[0])) 
+            	prices.put(f[0], new HashMap<>());
             prices.get(f[0]).put(f[1], f[2]);
         }
 		

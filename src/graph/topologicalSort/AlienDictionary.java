@@ -1,4 +1,4 @@
-package graph;
+package graph.topologicalSort;
 
 import java.util.ArrayList;
 
@@ -47,6 +47,7 @@ public class AlienDictionary {
         
         char ch = (char)(src + 'a');
         ans = ans + ch;
+        System.out.println(ans);
     }
     
 		

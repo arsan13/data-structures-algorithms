@@ -14,7 +14,7 @@ public class HamiltonianPaths {
 			String path, int origin) {
 		
 		// base
-		if(visited.size() == adj.size() - 1) {	// visisted.size == adj.size - 1, and not visited.size 
+		if(visited.size() == adj.size() - 1) {	// visisted.size == adj.size - 1, but not visited.size 
 			System.out.println(path);			// because vertex is appended in path before adding it in visited vertex
 												// visited set is one step behind
 			// Check hamiltonian cycle
