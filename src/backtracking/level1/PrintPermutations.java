@@ -1,5 +1,7 @@
 package backtracking.level1;
 
+// String with distinct characters...n!
+
 public class PrintPermutations {
 
 	private static void permutations(String ques, String ans) {
