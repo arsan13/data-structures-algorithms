@@ -1,4 +1,4 @@
-package backtracking.level2;
+package backtracking.level2.words;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,6 +35,6 @@ public class PrintPermutation1 {
 
 	public static void main(String[] args) {
 
-		permutations("aabb");
+		permutations("aaabbc");
 	}
 }
