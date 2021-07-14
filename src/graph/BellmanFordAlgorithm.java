@@ -44,10 +44,11 @@ public class BellmanFordAlgorithm {
 		}
 		
 		// Print distances of edges if there are no negative edges
-		if(flag == false)
+		if(flag == false) {
 		System.out.println("Vertex | Distance");
 		for(int i = 0; i < V; i++)
 			System.out.println(i + "\t " + dist[i]);
+		}
 	}
 	
 	public static void main(String[] args) {
