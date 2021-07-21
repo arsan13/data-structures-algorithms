@@ -1,4 +1,4 @@
-package dp;
+package dp.group1;
 
 import java.util.Arrays;
 import java.util.PriorityQueue;
@@ -44,7 +44,7 @@ public class MinCostPath {
 				int y = j + dy[k];
 				
 				if(x >= 0 && y >= 0 && x < n && y < m) {
-					if(dp[i][j] + cost[x][y] < dp[x][y]) {
+					if(dp[x][y] > dp[i][j] + cost[x][y]) {
 						dp[x][y] = dp[i][j] + cost[x][y];
 						pq.add(new Cell(x, y, dp[x][y]));
 					}

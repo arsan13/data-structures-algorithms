@@ -1,4 +1,4 @@
-package dp;
+package dp.group1;
 
 public class MinCostPath2 {
 

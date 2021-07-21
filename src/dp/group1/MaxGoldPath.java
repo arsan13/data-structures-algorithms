@@ -1,4 +1,4 @@
-package dp;
+package dp.group1;
 
 public class MaxGoldPath {
 
@@ -46,7 +46,7 @@ public class MaxGoldPath {
 				else if(i == 0) // first row
 					dp[i][j] = grid[i][j] + Math.max(dp[i][j+1], dp[i+1][j+1]);
 		
-				else if(i == n - 1) // first row
+				else if(i == n - 1) // last row
 					dp[i][j] = grid[i][j] + Math.max(dp[i][j+1], dp[i-1][j+1]);
 				
 				else // rest of the elements 

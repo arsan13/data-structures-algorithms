@@ -1,4 +1,4 @@
-package dp;
+package dp.group2;
 
 //Repitation allowed i.e., weight can be picked any number of times
 public class Kanapsack2 {

@@ -1,4 +1,4 @@
-package dp;
+package dp.group2;
 
 public class SubsetSum {
 
@@ -9,14 +9,15 @@ public class SubsetSum {
 //			return true;
 //		if( n == 0)
 //			return false;
-//		// If last element is greater then sum, then ignore it
-//        if (arr[n - 1] > sum)
-//        
+//		
+//		// If last element is greater then sum, then ignore it -> removes unnecesarry calls
+//      if (arr[n - 1] > sum)
 //        	return isSubsetSum(arr, n - 1, sum);
-//        boolean include = isSubsetSum(arr, n-1, sum-arr[n-1]);
-//        boolean exclude = isSubsetSum(arr, n-1, sum);
+	
+//      boolean include = isSubsetSum(arr, n-1, sum-arr[n-1]);
+//      boolean exclude = isSubsetSum(arr, n-1, sum);
 //        
-//        return include || exclude;
+//      return include || exclude;
 //	}
 	
 	private static boolean isSubsetSum(int[] arr, int n, int sum) {
@@ -27,7 +28,7 @@ public class SubsetSum {
 				
 				if(i == 0 && j == 0) 	// first cell
 					dp[i][j] = true;
-				else if(i == 0) 		// all cols first row except first col
+				else if(i == 0) 		// all cols of first row except first col
 					dp[i][j] = false;	
 				else if(j == 0)			// all rows of first col
 					dp[i][j] = true; 	
