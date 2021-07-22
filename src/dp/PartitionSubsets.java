@@ -6,7 +6,7 @@ package dp;
 public class PartitionSubsets {
 
 	// Brute
-	private static int count1(int n, int k) {
+	private static long count1(int n, int k) {
 
 		if (n == 0 || k == 0 || n < k)
 			return 0;
@@ -26,7 +26,7 @@ public class PartitionSubsets {
 		// t -> team, p -> player
 		for (int t = 1; t <= k; t++) {
 			for (int p = 1; p <= n; p++) {
-				if (t < p)
+				if (p < t)
 					dp[t][p] = 0;
 				else if (t == p)
 					dp[t][p] = 1;
