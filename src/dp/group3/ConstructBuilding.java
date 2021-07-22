@@ -5,7 +5,7 @@ package dp.group3;
  * Given an input number of sections and each section has 2 plots on either sides of the road. 
  * Find all possible ways to construct buildings in the plots such that 2 buildings aren't together.
 */
-public class ConstructBuiulding {
+public class ConstructBuilding {
 	
 	// Returns count for one section, return power of result m times for m sections
 	// Brute force

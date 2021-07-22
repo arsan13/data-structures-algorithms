@@ -1,6 +1,6 @@
-package dp;
+package dp.group4;
 
-//Maximum sum such that no two elements are adjacent
+//Maximum sum such that no two elements are adjacent | House Robber
 public class SticklerThief {
 
 	// Brute force O(2**n)
@@ -27,6 +27,9 @@ public class SticklerThief {
 	
 	// DP O(n)
 	private static int maxSumOptimal(int[] arr, int n) {
+		if(n == 0)
+			return 0;
+		
 		int oldInc = arr[0];
 		int oldExc = 0;
 		
@@ -43,7 +46,7 @@ public class SticklerThief {
 	
 	public static void main(String[] args) {
 
-		int arr[] = { 5, 5, 10, 100, 5, 5 };
+		int arr[] = { 5, 10, 100, 30, 20 };
 		
 		int ans = maxSumBrute(arr, arr.length);
 		System.out.println(ans);
