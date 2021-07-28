@@ -63,7 +63,7 @@ public class PaintHouses2 {
 					dp[i][j] = cost[i][j] + min1;
 				
 				if(dp[i][j] <= newMin1) {
-					newMin2 = newMin2;
+					newMin2 = newMin1;
 					newMin1 = dp[i][j];
 				}
 				else if(dp[i][j] <= newMin2) {
