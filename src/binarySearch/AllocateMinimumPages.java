@@ -1,9 +1,9 @@
 package binarySearch;
 
-/*
+/* 
  * Given number of pages in n different books and m students. 
- * The books are arranged in ascending order of number of pages.
  * Every student is assigned to read some consecutive books.
+ * The of number of pages of the book may or may not be in sorted order.
  * The task is to assign books in such a way that the maximum number of pages assigned to a student is minimum.
  */
 public class AllocateMinimumPages {
@@ -13,21 +13,22 @@ public class AllocateMinimumPages {
 		if(arr.length < m)
 			return -1;
 		
-		// Set range: low as maximum of array and high as sum of the given array. 
-		int low = arr[arr.length - 1];
+		// SET RANGE: low as maximum of array and high as sum of the given array. 
+		int low = 0; 
 		int high = 0;
 		for (int val : arr) {
+			low = Math.max(low, val);
 			high += val;
 		}
 
 		int res = -1;
 		while (low <= high) {
-			int mid = low + (high - low) / 2;
+			int mid = low + (high - low) / 2;	//mid is the maximum number of pages a student can read.
 
-			if (isPossible(arr, m, mid)) {
-				res = mid;
-				high = mid - 1;
-			} else {
+			if (isPossible(arr, m, mid)) {  
+				res = mid;		//Update possible answer in the result.
+				high = mid - 1;	//Try to minimize maximum number of pages a student can read.
+			} else {	//Increase maximum number of pages a student can read if current capacity is not enough for m students. 
 				low = mid + 1;
 			}
 		}
@@ -51,9 +52,7 @@ public class AllocateMinimumPages {
 			}
 		}
 
-		if (countOfStudents > m)
-			return false;
-		return true;
+		return (countOfStudents <= m);
 	}
 
 	public static void main(String[] args) {
