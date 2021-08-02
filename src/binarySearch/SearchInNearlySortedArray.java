@@ -17,7 +17,7 @@ public class SearchInNearlySortedArray {
 				return mid - 1;
 			} else if (arr[mid] == key) {
 				return mid;
-			} else if (mid < high && arr[mid + 1] == high) {
+			} else if (mid < high && arr[mid + 1] == key) {
 				return mid + 1;
 			} else {
 				high = mid - 2;
@@ -28,8 +28,8 @@ public class SearchInNearlySortedArray {
 
 	public static void main(String[] args) {
 
-		int arr[] = { 3, 2, 10, 4, 40 };
 		int key = 4;
+		int arr[] = { 3, 2, 10, 4, 40 };
 		System.out.println(search(arr, key));
 	}
 
