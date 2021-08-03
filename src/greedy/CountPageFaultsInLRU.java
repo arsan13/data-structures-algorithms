@@ -1,4 +1,5 @@
 package greedy;
+
 import java.util.Deque;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -8,27 +9,20 @@ public class CountPageFaultsInLRU {
 
 	private static int pageFaults(int[] pages, int capacity) {
 
-		Set<Integer> set = new HashSet<>();
 		Deque<Integer> cache = new LinkedList<>();
 		int res = 0;
 
 		for (int page : pages) {
 
-			if (!set.contains(page)) {
-				if (set.size() == capacity) {
-					int temp = cache.getLast();
-					set.remove(temp);
-					set.add(page);
+			if (!cache.contains(page)) {
+				if (cache.size() == capacity) {
 					cache.removeLast();
 					cache.addFirst(page);
-				}
-				else {
-					set.add(page);
+				} else {
 					cache.addFirst(page);
 				}
 				res++;
-			} 
-			else {
+			} else {
 				cache.remove(page);
 				cache.addFirst(page);
 			}

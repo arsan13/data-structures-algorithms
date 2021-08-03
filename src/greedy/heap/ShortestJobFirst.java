@@ -1,4 +1,4 @@
-package greedy;
+package greedy.heap;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,8 +24,6 @@ public class ShortestJobFirst {
 			return "Process [id=" + id + ", arrival=" + arrival + ", burst=" + burst + "]";
 		}	
 	}
-	
-//	static class/ ProcessStats
 	
 	private static List<Integer> getOrder(List<Process> list) {
 		
@@ -70,9 +68,9 @@ public class ShortestJobFirst {
 					p = list.get(i);
 					pq.add(new Process(p.id, p.arrival, p.burst));
 					i++;
+				} else {
+					break;
 				}
-				else
-					break;		
 			}
 		}
 		

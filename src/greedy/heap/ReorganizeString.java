@@ -1,9 +1,10 @@
-package greedy;
+package greedy.heap;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 
+//Given a string s, rearrange the characters of s so that any two adjacent characters are not the same.
 public class ReorganizeString {
 
 	private static String reorganize(String str) {
@@ -50,7 +51,6 @@ public class ReorganizeString {
 	public static void main(String[] args) {
 
 		String str = "aaabbcc";
-
 		System.out.println(reorganize(str));
 	}
 }

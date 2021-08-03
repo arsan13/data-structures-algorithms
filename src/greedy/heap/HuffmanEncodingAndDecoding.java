@@ -1,11 +1,14 @@
-package greedy;
+package greedy.heap;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
 
-public class HuffmanEncoding {
+public class HuffmanEncodingAndDecoding {
 
+	PriorityQueue<Node> pq = new PriorityQueue<>();
+	Node root = null;
+	
 	static class Node implements Comparable<Node> {
 		char ch;
 		int freq;
@@ -24,23 +27,25 @@ public class HuffmanEncoding {
 		
 	}
 
-	private static List<String> huffmanCodes(char[] charArray, int[] charFreq, int n) {
+	private String encode(char[] charArray, int[] charFreq, int n) {
 
 		List<String> res = new ArrayList<>();
-		PriorityQueue<Node> pq = new PriorityQueue<>();
 
 		for (int i = 0; i < n; i++)
 			pq.add(new Node(charArray[i], charFreq[i]));
 
 		Node root = buildHuffmanTree(pq);
-
+		
 		storeCode(root, "", res);
 
-		return res;
+		String str = "";
+		for(String s : res)
+			str += s;
+		
+		return str;
 	}
 
-	private static Node buildHuffmanTree(PriorityQueue<Node> pq) {
-		Node root = null;
+	private  Node buildHuffmanTree(PriorityQueue<Node> pq) {
 
 		while (pq.size() > 1) {
 			Node left = pq.poll(); // first minimum
@@ -56,11 +61,10 @@ public class HuffmanEncoding {
 		return root;
 	}
 
-	private static void storeCode(Node root, String str, List<String> res) {
+	private void storeCode(Node root, String str, List<String> res) {
 
-//		store if leaf node
 		if (root.left == null && root.right == null && Character.isLetter(root.ch)) {
-			res.add(root.ch + ": " + str);
+			res.add(str);
 			return;
 		}
 
@@ -68,13 +72,36 @@ public class HuffmanEncoding {
 		storeCode(root.right, str + "1", res);
 	}
 
+	public String decode(String str) {
+		Node temp = root;
+		StringBuilder res = new StringBuilder();
+		
+		for (int i = 0; i < str.length(); i++) {
+			if (str.charAt(i) == '1') 
+				temp = temp.right;
+			else 
+				temp = temp.left;
+			
+			if (temp.left == null && temp.right == null) {
+				res.append(temp.ch);
+				temp = root;
+			}
+		}		
+		return res.toString();
+	}
+	
 	public static void main(String[] args) {
 
 		int n = 6;
 		char[] charArray = { 'a', 'b', 'c', 'd', 'e', 'f' };
 		int[] charFreq = { 5, 9, 12, 13, 16, 45 };
 
-		List<String> list = huffmanCodes(charArray, charFreq, n);
-		System.out.println(list);
+		HuffmanEncodingAndDecoding obj = new HuffmanEncodingAndDecoding();
+		
+		String encode = obj.encode(charArray, charFreq, n);
+		System.out.println(encode);
+		
+		String decode = obj.decode(encode);
+		System.out.println(decode);
 	}
 }

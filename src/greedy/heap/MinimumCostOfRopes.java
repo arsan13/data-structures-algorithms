@@ -1,4 +1,4 @@
-package greedy;
+package greedy.heap;
 
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -8,8 +8,9 @@ public class MinimumCostOfRopes {
 	public static int minCost(int arr[], int n) {
 		Queue<Integer> heap = new PriorityQueue<>();
 
-		for (int val : arr)
+		for (int val : arr) {
 			heap.add(val);
+		}
 
 		int res = 0;
 		while (heap.size() > 1) {
