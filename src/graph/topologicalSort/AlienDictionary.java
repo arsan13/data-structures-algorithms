@@ -2,6 +2,8 @@ package graph.topologicalSort;
 
 import java.util.ArrayList;
 
+//Given a sorted dictionary of an alien language having N words and k starting alphabets of standard dictionary. 
+//Find the order of characters in the alien language.
 public class AlienDictionary {
 	
 	public static String findOrder(String [] dict, int n, int k)

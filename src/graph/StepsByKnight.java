@@ -5,6 +5,7 @@ import java.util.Queue;
 
 public class StepsByKnight {
 
+	// Modified BFS
 	public static int minStepToReachTarget(int KnightPos[], int TargetPos[], int N) {
 		
 		int dx[] = { -2, -1, 1, 2, -2, -1, 1, 2 };

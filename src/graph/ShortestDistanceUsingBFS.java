@@ -3,6 +3,7 @@ package graph;
 import java.util.LinkedList;
 import java.util.Queue;
 
+//O(V + E) Time, O(V) Space
 public class ShortestDistanceUsingBFS {
 
 	private LinkedList<Integer> adj[];
@@ -55,7 +56,7 @@ public class ShortestDistanceUsingBFS {
 		System.out.println("Minimum distance = " + dist);
 	}
 
-	public void fromSorceNode(int src) {
+	public void fromSourceNode(int src) {
 
 		Queue<Integer> queue = new LinkedList<>();
 		boolean visited[] = new boolean[adj.length];
@@ -69,7 +70,6 @@ public class ShortestDistanceUsingBFS {
 		dist[src] = 0;
 
 		while (!queue.isEmpty()) {
-
 			int current = queue.poll();
 
 			for (int neighbour : adj[current]) {
@@ -101,7 +101,7 @@ public class ShortestDistanceUsingBFS {
 
 		graph.betweenTwoNodes(0, 3);
 
-		graph.fromSorceNode(0);
+		graph.fromSourceNode(0);
 	}
 
 }
