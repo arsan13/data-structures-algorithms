@@ -1,4 +1,4 @@
-package backtracking.level1;
+package backtracking.level2;
 
 public class KthGrammar {
 

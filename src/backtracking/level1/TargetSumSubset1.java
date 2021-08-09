@@ -1,6 +1,6 @@
 package backtracking.level1;
 
-public class TargetSumSubset {
+public class TargetSumSubset1 {
 
 	private static void printSubsets(int[] arr, int index, String set, int currSum, int target) {
 		
@@ -13,7 +13,7 @@ public class TargetSumSubset {
 			return;
 		}
 		
-		printSubsets(arr, index+1, set+",", currSum + arr[index], target);
+		printSubsets(arr, index+1, set+","+arr[index], currSum + arr[index], target);
 		printSubsets(arr, index+1, set, currSum, target);
 	}
 	

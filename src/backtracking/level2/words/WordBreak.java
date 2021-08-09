@@ -5,6 +5,21 @@ import java.util.Set;
 
 public class WordBreak {
 
+	private static boolean isPossible(String str, Set<String> set) {
+		int n = str.length();
+		if( n == 0)
+			return true;
+		
+		for(int i = 1; i <= n; i++) {
+			if(set.contains(str.substring(0, i)) && isPossible(str.substring(i, n), set)) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	// All possible sentences 
 	private static void sentences(String str, Set<String> set, String ans) {
 
 		if(str.length() == 0) {
@@ -33,5 +48,9 @@ public class WordBreak {
 		set.add("hiring");
 		
 		sentences(str, set, "");
+		
+		str = "microsofthiring";
+		boolean ans = isPossible(str, set);
+		System.out.println("Is Word Break possible? " + ans);
 	}
 }
