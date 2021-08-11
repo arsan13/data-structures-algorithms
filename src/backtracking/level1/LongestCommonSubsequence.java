@@ -1,6 +1,6 @@
 package backtracking.level1;
 
-public class LongestCommonAncestor {
+public class LongestCommonSubsequence {
 
 	private static int lca(String str1, String str2, int n, int m) {
 		if (n == 0 || m == 0)
