@@ -1,6 +1,4 @@
-package dp.group2;
-import java.util.HashMap;
-import java.util.Map;
+package dp.group3;
 
 // Coins can be repeated 
 public class CoinChange {

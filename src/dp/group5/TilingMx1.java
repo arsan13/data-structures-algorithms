@@ -1,4 +1,4 @@
-package dp.group4;
+package dp.group5;
 
 // Tiling with Dominoes. 
 // Tiling Mx1 tiles in MxN board.

@@ -1,7 +1,7 @@
 package dp.group2;
 
 //Repitation not allowed i.e., weight once picked cannot be picked again
-public class Kanapsack1 {
+public class Knapsack {
 
 	// Brute force O(2**n) time complexity
 	private static int maxProfit1(int n, int[] weight, int[] price, int capacity) {
@@ -9,10 +9,10 @@ public class Kanapsack1 {
 		if (n == 0 || capacity == 0)
 			return 0;
 
-		if (weight[n - 1] > capacity) { 
-			return maxProfit1(n - 1, weight, price, capacity);  //exclude
+		if (weight[n - 1] > capacity) {
+			return maxProfit1(n - 1, weight, price, capacity); // exclude
 		}
-
+		
 		int include = price[n - 1] + maxProfit1(n - 1, weight, price, capacity - weight[n - 1]);
 		int exclude = maxProfit1(n - 1, weight, price, capacity);
 
@@ -24,14 +24,14 @@ public class Kanapsack1 {
 
 		if (n == 0 || capacity == 0)
 			return 0;
-		
-		if(dp[n][capacity] != 0)
+
+		if (dp[n][capacity] != 0)
 			return dp[n][capacity];
 
-		if (weight[n - 1] > capacity) { 
-			return maxProfit2(n - 1, weight, price, capacity, dp); //exclude
+		if (weight[n - 1] > capacity) {
+			return maxProfit2(n - 1, weight, price, capacity, dp); // exclude
 		}
-
+		System.out.println(weight[n-1] + "-" + capacity);
 		int include = price[n - 1] + maxProfit2(n - 1, weight, price, capacity - weight[n - 1], dp);
 		int exclude = maxProfit2(n - 1, weight, price, capacity, dp);
 
@@ -43,25 +43,23 @@ public class Kanapsack1 {
 
 	// Tabulation | O(n*capacity)
 	private static int maxProfit3(int n, int[] weight, int[] price, int capacity) {
-		
+
 		int[][] dp = new int[n + 1][capacity + 1];
 		int rows = dp.length;
 		int cols = dp[0].length;
-		
+
 		for (int i = 1; i < rows; i++) {
 			for (int j = 1; j < cols; j++) {
-				int exclude = dp[i - 1][j];
-				int include = 0;
-				
-				if (j >= weight[i - 1]) {
-					int remCapacity = j - weight[i - 1];
-					include = price[i - 1] + dp[i - 1][remCapacity];
+				if (weight[i - 1] <= j) {
+					int include = price[i - 1] + dp[i - 1][j - weight[i - 1]];
+					int exclude = dp[i - 1][j];
+					dp[i][j] = Math.max(include, exclude);
+				} else {
+					dp[i][j] = dp[i - 1][j];
 				}
-				
-				dp[i][j] = Math.max(include, exclude);
 			}
 		}
-		
+
 		return dp[rows - 1][cols - 1];
 	}
 
@@ -75,9 +73,9 @@ public class Kanapsack1 {
 		int ans = maxProfit1(n, weight, price, capacity);
 		System.out.println(ans);
 
-		ans = maxProfit2(n, weight, price, capacity, new int[n+1][capacity+1]);
+		ans = maxProfit2(n, weight, price, capacity, new int[n + 1][capacity + 1]);
 		System.out.println(ans);
-		
+
 		ans = maxProfit3(n, weight, price, capacity);
 		System.out.println(ans);
 	}

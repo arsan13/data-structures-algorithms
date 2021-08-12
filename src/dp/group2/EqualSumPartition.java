@@ -3,7 +3,7 @@ package dp.group2;
 /* Calculate sum of the array. 
  * 1) If sum is odd, there can not be two subsets with equal sum, so return false. 
  * 2) If sum of array elements is even, calculate sum/2 and find a subset of array with sum equal to sum/2. */
-public class EqualPartitionSubsetSum {
+public class EqualSumPartition {
 	
 	private static boolean isPossible(int[] arr) {
 		int sum = 0;
@@ -16,7 +16,6 @@ public class EqualPartitionSubsetSum {
         return isSubsetExists(arr, arr.length, sum/2);
     }
 	
-    //Target sum subset
     static boolean isSubsetExists(int arr[], int n, int sum) {
         boolean[][] dp = new boolean[n+1][sum+1];
         

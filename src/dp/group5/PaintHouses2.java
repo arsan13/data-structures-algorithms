@@ -1,4 +1,4 @@
-package dp.group4;
+package dp.group5;
 
 //For any number of colors, minimize cost of painting N houses such that adjacent houses have different colors.
 public class PaintHouses2 {

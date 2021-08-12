@@ -1,7 +1,7 @@
-package dp.group2;
+package dp.group3;
 
 //Repitation allowed i.e., weight can be picked any number of times
-public class Kanapsack2 {
+public class UnboundedKnapsack {
 
 	private static int maxProfit(int n, int[] weight, int[] price, int capacity) {
 		int[] dp = new int[capacity+1];

@@ -1,4 +1,4 @@
-package dp.group4;
+package dp.group5;
 
 //Given a fence with n posts and k colors.
 //Find out the number of ways of painting the fence such that at most 2 adjacent posts can have the same color. 

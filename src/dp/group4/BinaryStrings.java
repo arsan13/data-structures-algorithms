@@ -1,4 +1,4 @@
-package dp.group3;
+package dp.group4;
 
 
 // Count number of binary strings possible without consecutive 0's
