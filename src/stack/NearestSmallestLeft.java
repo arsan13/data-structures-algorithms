@@ -30,7 +30,7 @@ public class NearestSmallestLeft {
 			while(!stack.isEmpty() && stack.peek() >= arr[i])
 				stack.pop();
 			int value = stack.isEmpty()? -1 : stack.peek();
-			list.add(stack.push(value));
+			list.add(value);
 			stack.push(arr[i]);
 		}
 		
