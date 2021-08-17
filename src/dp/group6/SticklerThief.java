@@ -1,4 +1,4 @@
-package dp.group5;
+package dp.group6;
 
 //Maximum sum such that no two elements are adjacent | House Robber
 public class SticklerThief {

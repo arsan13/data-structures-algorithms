@@ -1,4 +1,4 @@
-package dp.group4;
+package dp.group5;
 
 public class CountDecodings {
 
