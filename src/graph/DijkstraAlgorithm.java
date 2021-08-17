@@ -4,62 +4,63 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
+
 public class DijkstraAlgorithm {
 	
-	static class Node implements Comparable<Node>
-	{
+	private static class Node {
 	    private int vertex;
 	    private int weight;
 	    
-	    Node(int _v, int _w) { 
-	    	vertex = _v; 
-	    	weight = _w; 
+	    Node(int v, int w) { 
+	    	vertex = v; 
+	    	weight = w; 
 	    }
-	    	    
-	    int getVertex() { return vertex; }
-	    int getWeight() { return weight; }
 	    
-	    @Override
-	    public int compareTo(Node other) 	    { 
-	    	return this.weight - other.weight;
-	    } 
 	}
 	
-	void shortestPath(int src, ArrayList<ArrayList<Node>> adj, int n) {
+	//O(V + ElogV) Time
+	public void shortestPath(int src, ArrayList<ArrayList<Node>> adj, int n) {
 		
 		int dist[] = new int[n];
 		int parent[] = new int[n];
 		
+//		O(V) Time
 		for(int i = 0; i < n; i++)
 			dist[i] = Integer.MAX_VALUE;
 		
-		PriorityQueue<Node> minQueue = new PriorityQueue<Node>();
+		PriorityQueue<Node> minQueue = new PriorityQueue<Node>((a, b) -> a.weight - b.weight);
 		
 		dist[src] = 0;
 		parent[src] = -1;
 		minQueue.add(new Node(src, 0));
 	 	
+//		O(ElogV) Time
 		while(!minQueue.isEmpty()) {
 			Node node = minQueue.poll();
 			
-			for(Node neighbour : adj.get(node.getVertex())) {
-				if(dist[node.getVertex()] + neighbour.getWeight() < dist[neighbour.getVertex()]) {
-					dist[neighbour.getVertex()] = dist[node.getVertex()] + neighbour.getWeight();
-					parent[neighbour.getVertex()] = node.getVertex();
-					minQueue.add(new Node(neighbour.getVertex(), dist[neighbour.getVertex()]));
+			for(Node neighbour : adj.get(node.vertex)) {
+				if(dist[node.vertex] + neighbour.weight < dist[neighbour.vertex]) {
+					dist[neighbour.vertex] = dist[node.vertex] + neighbour.weight;
+					parent[neighbour.vertex] = node.vertex;
+					minQueue.add(new Node(neighbour.vertex, dist[neighbour.vertex]));
 				}
 			}
 		}
 		
+		System.out.print("Vertex:   ");
+		for(int i = 0; i < n; i++) 
+			System.out.print(i + " ");
+		System.out.println();
+		
 		System.out.print("Distance: ");
 		for(int i = 0; i < n; i++) 
 			System.out.print(dist[i] + " ");
-		
 		System.out.println();
 		
 		System.out.print("Parent:  ");
 		for(int i = 0; i < n; i++)
 			System.out.print(parent[i] + " ");
+		System.out.println();
 	}
 	
 	public static void main(String[] args) {
