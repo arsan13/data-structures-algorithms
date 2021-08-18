@@ -15,8 +15,7 @@ public class LongestCommonSubsequence {
 		return Math.max(lcs1(str1, str2, n - 1, m), lcs1(str1, str2, n, m - 1));
 	}
 
-	// Optimal. Memoization. Time: O(n*m). Space: O(n*m) + auxillary(recursive
-	// stack)
+	// Optimal. Memoization. Time: O(n*m). Space: O(n*m) + auxillary(recursive stack)
 	private static int lcs2(String str1, String str2, int n, int m, int[][] dp) {
 		if (n == 0 || m == 0)
 			return 0;
