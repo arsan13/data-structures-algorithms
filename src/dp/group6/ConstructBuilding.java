@@ -1,4 +1,4 @@
-package dp.group5;
+package dp.group6;
 
 /*
  * Count possible ways to construct buildings.

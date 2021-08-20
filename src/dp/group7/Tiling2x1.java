@@ -1,4 +1,4 @@
-package dp.group6;
+package dp.group7;
 
 // Tiling with Dominoes. 
 // Tiling 2x1 tiles in 2xN board.
