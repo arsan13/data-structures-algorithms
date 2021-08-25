@@ -16,7 +16,7 @@ public class ArticulationPointsUsingTarjan {
 			if(neighbour == parent)
 				continue;
 			
-			if(!visited[src]) {
+			if(!visited[neighbour]) {
 				children++;
 				dfs(neighbour, src, isArticulation, visited, disc, low, adj, timer);
 				low[src] = Math.min(low[src], low[neighbour]);
@@ -49,8 +49,8 @@ public class ArticulationPointsUsingTarjan {
 		}
 		
 		for(int i = 0; i < n; i++) {
-//			if(isArticulation[i])
-				System.out.println(isArticulation[i]);
+			if(isArticulation[i])
+				System.out.println(i);
 		}
 	}
 	

@@ -29,15 +29,14 @@ public class Knapsack {
 			return dp[n][capacity];
 
 		if (weight[n - 1] > capacity) {
-			return maxProfit2(n - 1, weight, price, capacity, dp); // exclude
+			return dp[n][capacity] = maxProfit2(n - 1, weight, price, capacity, dp); // exclude
 		}
-		System.out.println(weight[n-1] + "-" + capacity);
+		
 		int include = price[n - 1] + maxProfit2(n - 1, weight, price, capacity - weight[n - 1], dp);
 		int exclude = maxProfit2(n - 1, weight, price, capacity, dp);
 
 		int res = Math.max(include, exclude);
-		dp[n][capacity] = res;
-		return res;
+		return dp[n][capacity] = res;
 
 	}
 

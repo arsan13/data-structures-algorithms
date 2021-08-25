@@ -18,7 +18,7 @@ public class CountSubsetSums {
 			return dp[n][k];
 		
 		if (arr[n - 1] > k) {  // Exclude
-			return getWays1(arr, n - 1, k, dp);
+			return dp[n][k] = getWays1(arr, n - 1, k, dp);
 		}
 		// include + exclude
 		int include = getWays1(arr, n - 1, k - arr[n - 1], dp);
