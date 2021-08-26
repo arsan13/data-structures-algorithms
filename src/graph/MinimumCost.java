@@ -3,8 +3,6 @@ package graph;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 
-import graph.PrimAlgorithm.Pair;
-
 public class MinimumCost {
 
 	static class Pair implements Comparable<Pair>{

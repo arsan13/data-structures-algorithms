@@ -1,4 +1,4 @@
-package graph;
+package graph.algorithms;
 
 import java.util.ArrayList;
 import java.util.Collections;

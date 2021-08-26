@@ -1,8 +1,8 @@
-package graph;
+package graph.algorithms;
 
 import java.util.ArrayList;
 
-import graph.BellmanFordAlgorithm.Edge;
+import graph.algorithms.BellmanFordAlgorithm.Edge;
 
 public class FloydWarshallAlgorithm {
 	

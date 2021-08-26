@@ -1,9 +1,9 @@
-package graph;
+package graph.algorithms;
 
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 
-public class PrimAlgorithm {
+public class PrimsAlgorithm {
 	
 	static class Node {
 		int vertex;
