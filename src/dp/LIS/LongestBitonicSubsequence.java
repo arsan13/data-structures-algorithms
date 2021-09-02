@@ -47,7 +47,7 @@ public class LongestBitonicSubsequence {
 		for(int i = n-2; i >= 0; i--) {
 			int max = 0;
 			
-			for(int j = n-1; j >= 0; j--) {
+			for(int j = n-1; j > i; j--) {
 				if(arr[i] > arr[j]) {
 					max = Math.max(max, dp[j]);
 				}
