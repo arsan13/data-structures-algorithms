@@ -14,10 +14,11 @@ public class BubbleSort {
                     int temp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
+
+                    swapped = true;
                 }
-                swapped = true;
             }
-            if(!swapped) 	// optimising bubble sort
+            if(!swapped) 	// optimizing bubble sort
             	break;
         }
     }
