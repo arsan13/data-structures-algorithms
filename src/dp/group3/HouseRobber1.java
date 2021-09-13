@@ -1,7 +1,7 @@
 package dp.group3;
 
-//Maximum sum such that no two elements are adjacent | House Robber
-public class SticklerThief {
+//Maximum sum such that no two elements are adjacent | Stickler Thief
+public class HouseRobber1 {
 
 	// Brute force O(2**n)
 	private static int maxSumBrute(int[] arr, int n) {
