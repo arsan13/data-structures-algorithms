@@ -15,9 +15,13 @@ public class LeftViewOfTree {
 		if (root == null)
 			return;
 
-		if (maxLevel < level) {
+//		if (maxLevel < level) {
+//			res.add(root.data);
+//			maxLevel = level;
+//		}
+		
+		if (level == res.size()) {
 			res.add(root.data);
-			maxLevel = level;
 		}
 
 		leftViewRec(root.left, level + 1);
