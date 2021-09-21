@@ -2,6 +2,8 @@ package stack;
 
 import java.util.Stack;
 
+// Link of the problem statement: 
+// https://practice.geeksforgeeks.org/problems/the-celebrity-problem/1
 public class CelebrityProblem {
 
 	static int celebrity(int M[][], int n){

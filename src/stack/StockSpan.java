@@ -1,10 +1,9 @@
 package stack;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Stack;
 
+// Link of the problem statement: 
+// https://practice.geeksforgeeks.org/problems/stock-span-problem-1587115621/1
 public class StockSpan {
 
 	public static void main(String args[]) {
