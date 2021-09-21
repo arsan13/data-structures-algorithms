@@ -4,7 +4,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Stack;
 
-public class LevelOrder {
+public class Bfs {
 
 	public void levelOrder(Node root) {
 		if (root == null)

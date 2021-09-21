@@ -2,7 +2,7 @@ package tree.traversal;
 
 import java.util.Stack;
 
-public class Basic {
+public class Dfs {
 	
 	public void preOrder(Node root) {
 		if (root == null)

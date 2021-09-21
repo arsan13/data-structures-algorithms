@@ -1,5 +1,6 @@
 package tree.bt;
 
+//Given a binary tree and two nodes say p and 1, write a function to find the least common ancestor.
 public class LCAInBT {
 
 	public Node lowestCommonAncestor(Node root, Node p, Node q) {
