@@ -1,4 +1,4 @@
-package tree.bt.group;
+package tree.bt.group1;
 
 public class Node {
 	int data;

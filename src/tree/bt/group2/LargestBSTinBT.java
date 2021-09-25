@@ -1,4 +1,4 @@
-package tree.bt;
+package tree.bt.group2;
 
 /**
  * Given a binary tree, find the size of largest binary search subtree in this binary tree. 
