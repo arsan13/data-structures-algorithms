@@ -5,7 +5,46 @@ import java.util.*;
 // Smallest window of string s containing all characters of string p;
 public class MinWindowSubstring1 {
 
-	private static int findMinWindow(String s, String t) {
+	private static String minWindowNew(String s, String t) {
+
+		Map<Character, Integer> map = new HashMap<>();
+		int len = Integer.MAX_VALUE;
+		int startIndex = -1;
+		int count = 0;
+
+		for(char ch : t.toCharArray()) {
+			map.put(ch, map.getOrDefault(ch, 0) + 1);
+		}
+
+		int l = 0;
+		int r = 0;
+		while(r < s.length()) {
+			if(map.getOrDefault(s.charAt(r), 0) > 0) {
+				count++;
+			}
+			map.put(s.charAt(r), map.getOrDefault(s.charAt(r), 0) - 1);
+
+			while(count == t.length()) {
+				if ((r - l + 1) < len) {
+					len = (r - l + 1);
+					startIndex = l;
+				}
+
+				map.put(s.charAt(l), map.get(s.charAt(l)) + 1);
+				if(map.get(s.charAt(l)) > 0) {
+					count--;
+				}
+
+				l++;
+			}
+
+			r++;
+		}
+
+		return startIndex == -1 ? "" : s.substring(startIndex, startIndex + len);
+	}
+
+	private static String findMinWindow(String s, String t) {
 
 		String res = "";
 		Map<Character, Integer> map = new HashMap<>();
@@ -30,7 +69,7 @@ public class MinWindowSubstring1 {
 			while (count == 0) { // required window, try to optimize
 
 				int windowSize = j - i + 1;
-				if (res.equals("") || res.length() > windowSize) {
+				if (res.isEmpty() || res.length() > windowSize) {
 					res = s.substring(i, j + 1);
 				}
 
@@ -46,14 +85,15 @@ public class MinWindowSubstring1 {
 			j++;
 		}
 
-		System.out.println(res);
-		return res.length();
+		return res;
 	}
 
 	public static void main(String[] args) {
 		String str = "timetopractice";
 		String t = "toc";
-		int ans = findMinWindow(str, t);
-		System.out.println("Minimum window: " + ans);
+		String ans = findMinWindow(str, t);
+		System.out.println("Minimum window 1: " + ans);
+		ans = minWindowNew(str, t);
+		System.out.println("Minimum window 2: " + ans);
 	}
 }
