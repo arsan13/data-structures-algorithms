@@ -1,6 +1,9 @@
 package sorting;
 
-public class MergeSort 
+import java.util.ArrayList;
+import java.util.List;
+
+public class MergeSort
 {
 	public static void mergeSort(int arr[], int low, int high)
 	{
@@ -9,12 +12,11 @@ public class MergeSort
 			int mid = (low + high) / 2;
 			mergeSort(arr, low, mid);
 			mergeSort(arr, mid+1, high);
-			merge(arr, low, mid, high);
+			mergeNew(arr, low, mid, high);
 		}
 	}
 
-	private static void merge(int[] arr, int low, int mid, int high) 
-	{
+	private static void merge(int[] arr, int low, int mid, int high) {
 		int n1 = mid - low + 1; 
 		int n2 = high - mid;
 		
@@ -43,6 +45,31 @@ public class MergeSort
 		
 		while(j < n2)
 			arr[k++] = R[j++];
+	}
+
+	private static void mergeNew(int[] arr, int low, int mid, int high) {
+		List<Integer> list = new ArrayList<>();
+
+		int left = low;
+		int right = mid+1;
+		while (left <= mid && right <= high) {
+			if(arr[left] <= arr[right]) {
+				list.add(arr[left++]);
+			} else {
+				list.add(arr[right++]);
+			}
+		}
+
+		while (left <= mid) {
+			list.add(arr[left++]);
+		}
+		while (right <= high) {
+			list.add(arr[right++]);
+		}
+
+		for (int i = low; i <= high; i++) {
+			arr[i] = list.get(i - low);
+		}
 	}
 	
 	public static void main(String[] args) {
