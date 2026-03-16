@@ -1,54 +1,54 @@
 package backtracking.level1;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class NQueensOptimized {
 
 //	BRANCH AND BOUND
-	
-	public static void nQueens(int n) {
 
-		int[][] chess = new int[n][n];
-		boolean[] cols = new boolean[n];
-		boolean[] ndiag = new boolean[2 * n - 1]; //2*n-1 is total number of diagonals in n*n matrix
-		boolean[] rdiag = new boolean[2 * n - 1];
-
-		nQueensUtil(0, chess, cols, ndiag, rdiag);
+	public static void main(String[] args) {
+		System.out.println(nQueens(4));
 
 	}
 
-	private static void nQueensUtil(int row, int[][] chess, boolean[] cols, boolean[] ndiag, boolean[] rdiag) {
+	public static List<List<String>> nQueens(int n) {
+		List<List<String>> res = new ArrayList<>();
 
-		if (row == chess.length) {
-			printMatrix(chess);
-			System.out.println("========");
+		String[][] board = new String[n][n];
+		for (String[] row : board) {
+			Arrays.fill(row, ".");
+		}
+
+		nQueens(n, 0, new boolean[n], new boolean[2 * n - 1], new boolean[2 * n - 1], board, res);
+		return res;
+	}
+
+	private static void nQueens(int n, int col, boolean[] leftRow, boolean[] lowerDiagonal, boolean[] upperDiagonal,  String[][] board, List<List<String>> res) {
+		if(col == n) {
+			List<String> list = new ArrayList<>();
+			for (String[] row : board) {
+				list.add(String.join("", row));
+			}
+			res.add(list);
 			return;
 		}
 
-		for (int col = 0; col < chess.length; col++) {
-			if (!cols[col] && !ndiag[row + col] && !rdiag[row - col + chess.length - 1]) {
-				chess[row][col] = 1;
-				cols[col] = true;
-				ndiag[row + col] = true;
-				rdiag[row - col + chess.length - 1] = true;
-				nQueensUtil(row + 1, chess, cols, ndiag, rdiag);
-				rdiag[row - col + chess.length - 1] = false;
-				ndiag[row + col] = false;
-				cols[col] = false;
-				chess[row][col] = 0;
+		for(int row = 0; row < n; row++) {
+			if (!leftRow[row] && !lowerDiagonal[row + col] && !upperDiagonal[(n - 1) + (col - row)]) {
+				board[row][col] = "Q";
+				leftRow[row] = true;
+				lowerDiagonal[row + col] = true;
+				upperDiagonal[(n - 1) + (col - row)] = true;
+
+				nQueens(n, col + 1, leftRow, lowerDiagonal, upperDiagonal, board, res);
+
+				board[row][col] = ".";
+				leftRow[row] = false;
+				lowerDiagonal[row + col] = false;
+				upperDiagonal[(n - 1) + (col - row)] = false;
 			}
 		}
-	}
-
-	private static void printMatrix(int[][] mat) {
-		for (int i = 0; i < mat.length; i++) {
-			for (int j = 0; j < mat[0].length; j++)
-				System.out.print(mat[i][j] + " ");
-			System.out.println();
-		}
-	}
-
-	public static void main(String[] args) {
-
-		int n = 4;
-		nQueens(n);
 	}
 }

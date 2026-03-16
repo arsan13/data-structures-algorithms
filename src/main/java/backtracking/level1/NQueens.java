@@ -1,86 +1,80 @@
 package backtracking.level1;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class NQueens {
 
+	public static void main(String[] args) {
+		System.out.println(nQueens(4));
+
+	}
+
 	public static List<List<String>> nQueens(int n) {
-
 		List<List<String>> res = new ArrayList<>();
-		int[][] chess = new int[n][n];
 
-		nQueensUtil(0, chess, n, res);
+		String[][] board = new String[n][n];
+		for (String[] row : board) {
+			Arrays.fill(row, ".");
+		}
 
+		nQueens(n, 0, board, res);
 		return res;
 	}
 
-	private static void nQueensUtil(int row, int[][] chess, int size, List<List<String>> res) {
-
-		if (row == size) {
-			
-//			printMatrix(chess);
-			
+	private static void nQueens(int n, int col, String[][] board, List<List<String>> res) {
+		if(col == n) {
 			List<String> list = new ArrayList<>();
-			for (int i = 0; i < chess.length; i++) {
-				String str = "";
-				for (int j = 0; j < chess[0].length; j++) {
-					if (chess[i][j] == 0)
-						str += ".";
-					else
-						str += "Q";
-				}
-				list.add(str);
+			for (String[] row : board) {
+				list.add(String.join("", row));
 			}
 			res.add(list);
 			return;
 		}
 
-		for (int col = 0; col < size; col++) {
-			if (isSafe(row, col, chess) == true) {
-				chess[row][col] = 1;
-				nQueensUtil(row + 1, chess, size, res);
-				chess[row][col] = 0;
+		for(int row = 0; row < n; row++) {
+			if (isSafe(board, row, col, n)) {
+				board[row][col] = "Q";
+				nQueens(n, col + 1, board, res);
+				board[row][col] = ".";
 			}
 		}
 	}
 
-	private static boolean isSafe(int row, int col, int[][] chess) {
-
-		// Check upwards vertical column
-		for (int i = row - 1, j = col; i >= 0; i--) {
-			if (chess[i][j] == 1)
+	private static boolean isSafe(String[][] board, int row, int col, int n) {
+		// Upper diagonal
+		int tempRow = row;
+		int tempCol = col;
+		while(tempRow >= 0 && tempCol >= 0) {
+			if(Objects.equals(board[tempRow][tempCol], "Q")) {
 				return false;
+			}
+			tempRow--;
+			tempCol--;
 		}
 
-		// Check upwards left diagonals
-		for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
-			if (chess[i][j] == 1)
+		// Left Row
+		tempCol = col;
+		while(tempCol >= 0) {
+			if(Objects.equals(board[row][tempCol], "Q")) {
 				return false;
+			}
+			tempCol--;
 		}
 
-		// Check upwards right diagonals
-		for (int i = row - 1, j = col + 1; i >= 0 && j < chess.length; i--, j++) {
-			if (chess[i][j] == 1)
+		// Lower Diagonal
+		tempRow = row;
+		tempCol = col;
+		while(tempRow < n && tempCol >= 0) {
+			if(Objects.equals(board[tempRow][tempCol], "Q")) {
 				return false;
+			}
+			tempRow++;
+			tempCol--;
 		}
 
 		return true;
-	}
-
-	private static void printMatrix(int[][] mat) {
-		for (int i = 0; i < mat.length; i++) {
-			for (int j = 0; j < mat[0].length; j++)
-				System.out.print(mat[i][j] + " ");
-			System.out.println();
-		}
-	}
-
-	public static void main(String[] args) {
-
-		int n = 4;
-		List<List<String>> res = nQueens(n);
-		System.out.println(res);
-
 	}
 }
