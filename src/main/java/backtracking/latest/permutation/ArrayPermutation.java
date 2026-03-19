@@ -1,4 +1,4 @@
-package backtracking.latest;
+package backtracking.latest.permutation;
 
 import java.util.ArrayList;
 import java.util.List;
