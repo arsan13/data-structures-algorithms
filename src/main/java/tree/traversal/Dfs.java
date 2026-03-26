@@ -69,7 +69,7 @@ public class Dfs {
 //			if(root.left != null)
 //				stack1.push(root.left);
 //			if(root.right != null)
-//				stack2.push(root.right);
+//				stack1.push(root.right);
 //		}
 //		
 //		while(!stack2.isEmpty()) {
