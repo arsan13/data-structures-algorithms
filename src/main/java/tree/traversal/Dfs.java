@@ -1,5 +1,7 @@
 package tree.traversal;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class Dfs {
@@ -98,4 +100,45 @@ public class Dfs {
 			}
 		}
 	}
+
+    public void allTraversals(Node root) {
+        if (root == null) {
+            return;
+        }
+
+        List<Integer> preOrder = new ArrayList<>();
+        List<Integer> inOrder = new ArrayList<>();
+        List<Integer> postOrder = new ArrayList<>();
+
+        Stack<Pair> stack = new Stack<>();
+        stack.push(new Pair(root, 1));
+
+        while (!stack.isEmpty()) {
+            Pair pair = stack.pop();
+
+            if (pair.number == 1) {
+                inOrder.add(pair.node.data);
+                stack.push(new Pair(pair.node, 2));
+
+                if (pair.node.left != null) {
+                    stack.push(new Pair(pair.node.left,1));
+                }
+            } else if (pair.number == 2) {
+                preOrder.add(pair.node.data);
+                stack.push(new Pair(pair.node, 3));
+
+                if (pair.node.right != null) {
+                    stack.push(new Pair(pair.node.right,1));
+                }
+            } else {
+                postOrder.add(pair.node.data);
+            }
+        }
+
+        System.out.println(preOrder);
+        System.out.println(inOrder);
+        System.out.println(postOrder);
+    }
+
+    private record Pair(Node node, int number) {}
 }
