@@ -1,4 +1,4 @@
-package tree.bt;
+package tree.bt.old;
 
 //Given a Binary Tree, check if all leaves are at same level or not.
 public class LevelOfLeafNodes {

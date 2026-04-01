@@ -1,4 +1,4 @@
-package tree.bt;
+package tree.bt.old;
 
 //Convert given tree to doubly linked list.
 public class TreeToDLL {

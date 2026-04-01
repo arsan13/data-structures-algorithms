@@ -1,4 +1,4 @@
-package tree.bt;
+package tree.bt.old;
 
 //Given a binary tree and two nodes say p and 1, write a function to find the least common ancestor.
 public class LCAInBT {

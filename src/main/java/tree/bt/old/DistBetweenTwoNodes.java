@@ -1,4 +1,4 @@
-package tree.bt;
+package tree.bt.old;
 
 public class DistBetweenTwoNodes {
 

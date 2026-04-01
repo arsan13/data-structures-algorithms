@@ -1,4 +1,4 @@
-package tree.bt;
+package tree.bt.old;
 
 /* A SumTree is a Binary Tree where the value of a node is equal to the sum of the nodes present in its left 
  * subtree and right subtree. An empty tree is SumTree and the sum of an empty tree can be considered as 0. 

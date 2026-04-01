@@ -1,14 +1,15 @@
 package tree.traversal;
 
 import java.util.ArrayList;
+import java.util.List;
 
 //Anti-clockwise direction
 public class BoundaryOrder {
 
-	public ArrayList<Integer> printBoundary1(Node node) {
-		ArrayList<Integer> ans = new ArrayList<Integer>();
+	public List<Integer> printBoundary1(Node node) {
+		ArrayList<Integer> ans = new ArrayList<>();
 
-		if (isLeaf(node) == false)
+		if (!isLeaf(node))
 			ans.add(node.data);
 
 		addLeftBoundary(node, ans);
@@ -18,14 +19,14 @@ public class BoundaryOrder {
 		return ans;
 	}
 
-	private Boolean isLeaf(Node root) {
+	private boolean isLeaf(Node root) {
 		return (root.left == null) && (root.right == null);
 	}
 
 	private void addLeftBoundary(Node root, ArrayList<Integer> res) {
 		Node cur = root.left;
 		while (cur != null) {
-			if (isLeaf(cur) == false)
+			if (!isLeaf(cur))
 				res.add(cur.data);
 			if (cur.left != null)
 				cur = cur.left;
@@ -35,10 +36,10 @@ public class BoundaryOrder {
 	}
 
 	private void addRightBoundary(Node root, ArrayList<Integer> res) {
-		ArrayList<Integer> tmp = new ArrayList<Integer>();
+		ArrayList<Integer> tmp = new ArrayList<>();
 		Node cur = root.right;
 		while (cur != null) {
-			if (isLeaf(cur) == false)
+			if (!isLeaf(cur))
 				tmp.add(cur.data);
 			if (cur.right != null)
 				cur = cur.right;
