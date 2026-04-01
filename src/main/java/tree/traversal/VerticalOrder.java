@@ -9,53 +9,85 @@ import java.util.TreeMap;
 
 public class VerticalOrder {
 
-	private class Tuple {
-		Node node;
-		int row;
-		int col;
+	public static void main(String[] args) {
+		Node root = new Node(1);
 
-		public Tuple(Node _node, int _row, int _col) {
-			node = _node;
-			row = _row;
-			col = _col;
-		}
+		root.left = new Node(2);
+		root.right = new Node(3);
+
+		root.left.left = new Node(4);
+		root.left.right = new Node(5);
+
+		root.right.left = new Node(6);
+		root.right.right = new Node(7);
+
+		System.out.println(new VerticalOrder().verticalTraversal(root));
 	}
 
-	public List<List<Integer>> verticalTraversal(Node root) {
-		TreeMap<Integer, TreeMap<Integer, PriorityQueue<Integer>>> map = new TreeMap<>();
-		Queue<Tuple> queue = new LinkedList<>();
-		queue.add(new Tuple(root, 0, 0));
-
-		while (!queue.isEmpty()) {
-			Tuple tuple = queue.poll();
-			Node node = tuple.node;
-			int x = tuple.row;
-			int y = tuple.col;
-
-			if (!map.containsKey(x))
-				map.put(x, new TreeMap<>());
-			if (!map.get(x).containsKey(y))
-				map.get(x).put(y, new PriorityQueue<>());
-
-			map.get(x).get(y).add(node.data);
-
-			if (node.left != null)
-				queue.add(new Tuple(node.left, x - 1, y + 1));
-			if (node.right != null)
-				queue.add(new Tuple(node.right, x + 1, y + 1));
+    public List<List<Integer>> verticalTraversal(Node root) {
+        if (root == null) {
+			return new ArrayList<>();
 		}
 
-		List<List<Integer>> res = new ArrayList<>();
-        for(TreeMap<Integer, PriorityQueue<Integer>> sMap : map.values()) {
-            List<Integer> list = new ArrayList<>();
-            for(PriorityQueue<Integer> nodes : sMap.values()) {
-                while(!nodes.isEmpty()) {
-                    list.add(nodes.poll());
+        // column -> row -> minHeap
+        TreeMap<Integer, TreeMap<Integer, PriorityQueue<Integer>>> columnMap = new TreeMap<>();
+
+        Queue<Tuple> queue = new LinkedList<>();
+        queue.offer(new Tuple(root, 0, 0));
+
+        while (!queue.isEmpty()) {
+            Tuple curr = queue.poll();
+			int col = curr.col;
+			int row = curr.row;
+
+			if (!columnMap.containsKey(col)) {
+				columnMap.put(col, new TreeMap<>());
+			}
+			if (!columnMap.get(col).containsKey(row)) {
+				columnMap.get(col).put(row, new PriorityQueue<>());
+			}
+			columnMap.get(col).get(row).offer(curr.node.data);
+
+//			columnMap
+//					.computeIfAbsent(col, c -> new TreeMap<>())
+//					.computeIfAbsent(row, r -> new PriorityQueue<>())
+//					.offer(curr.node.data);
+
+            if (curr.node.left != null) {
+                queue.offer(new Tuple(curr.node.left, col - 1, row + 1));
+            }
+
+            if (curr.node.right != null) {
+                queue.offer(new Tuple(curr.node.right, col + 1, row + 1));
+            }
+        }
+
+        List<List<Integer>> result = new ArrayList<>();
+
+        for (TreeMap<Integer, PriorityQueue<Integer>> rowMap : columnMap.values()) {
+            List<Integer> column = new ArrayList<>();
+
+            for (PriorityQueue<Integer> minHeap : rowMap.values()) {
+                while (!minHeap.isEmpty()) {
+                    column.add(minHeap.poll());
                 }
             }
-            res.add(list);
+
+            result.add(column);
         }
-        
-        return res;
-	}
+
+        return result;
+    }
+
+    private static class Tuple {
+        Node node;
+        int col; // horizontal distance
+        int row; // level (depth)
+
+        Tuple(Node node, int col, int row) {
+            this.node = node;
+            this.col = col;
+            this.row = row;
+        }
+    }
 }
