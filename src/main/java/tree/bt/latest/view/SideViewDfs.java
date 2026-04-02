@@ -3,7 +3,7 @@ package tree.bt.latest.view;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SideView {
+public class SideViewDfs {
 
     public static List<Integer> sideView(Node root) {
         List<Integer> list = new ArrayList<>();
