@@ -1,9 +1,5 @@
 package tree.bt.latest;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
 public class LowestCommonAncestor {
 
     public static void main(String[] args) {
@@ -19,7 +15,7 @@ public class LowestCommonAncestor {
         root.right.right = new TreeNode(7);
 
         System.out.println(findLCA(root, new TreeNode(4), new TreeNode(5)).data); // Output: 2
-        System.out.println(findLCA(root, new TreeNode(4), new TreeNode(5)).data); // Output: 1
+        System.out.println(findLCA(root, new TreeNode(4), new TreeNode(6)).data); // Output: 1
     }
 
     public static TreeNode findLCA(TreeNode root, TreeNode p, TreeNode q) {
@@ -35,7 +31,7 @@ public class LowestCommonAncestor {
         TreeNode right = findLCA(root.right, p, q);
 
         if(left != null && right != null) {
-            return right;
+            return root;
         }
         if(left != null) {
             return left;
