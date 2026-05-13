@@ -1,8 +1,9 @@
 package tree.bt.latest;
 
 public class TreeNode {
-	int data;
-	TreeNode left, right;
+	public int data;
+	public TreeNode left;
+    public TreeNode right;
 	
 	TreeNode(int data) {
 		this.data = data;

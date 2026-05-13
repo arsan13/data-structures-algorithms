@@ -1,28 +1,32 @@
-package tree.bt.latest;
+package tree.bt.latest.group1;
 
-import java.util.ArrayList;
+import tree.bt.latest.TreeNode;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
-public class PrintNodesAtDistanceK {
+/*
+Optimize by using graph
+ */
+public class MinimumTimeToBurnATree {
 
-    public List<Integer> distanceK(TreeNode root, TreeNode target, int k) {
+    public int amountOfTime(TreeNode root, int start) {
         Map<TreeNode, TreeNode> parentsMap = getParentsMap(root);
         Set<TreeNode> visited = new HashSet<>();
         Queue<TreeNode> queue = new LinkedList<>();
 
+        TreeNode target = getTargetNode(root, start);
         queue.offer(target);
         visited.add(target);
 
-        int level = 0;
-        while (!queue.isEmpty() && level != k) {
+        int time = 0;
+        while (!queue.isEmpty()) {
             int size = queue.size();
-            level++;
+            time++;
 
             for (int i = 0; i < size; i++) {
                 TreeNode current = queue.poll();
@@ -40,16 +44,30 @@ public class PrintNodesAtDistanceK {
                     visited.add(parentsMap.get(current));
                 }
             }
-
-
         }
+        return time;
+    }
 
-        List<Integer> res = new ArrayList<>();
+    private TreeNode getTargetNode(TreeNode root, int target) {
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+
         while (!queue.isEmpty()) {
             TreeNode node = queue.poll();
-            res.add(node.data);
+
+            if (node.data == target) {
+                return node;
+            }
+
+            if (node.left != null) {
+                queue.offer(node.left);
+            }
+            if (node.right != null) {
+                queue.offer(node.right);
+            }
         }
-        return res;
+
+        return null;
     }
 
     private Map<TreeNode, TreeNode> getParentsMap(TreeNode root) {
