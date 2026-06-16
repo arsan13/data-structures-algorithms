@@ -5,8 +5,7 @@ public class InsertionInBST {
 	// Recursion
 	private Node insert1(Node root, int data) {
 		if (root == null) {
-			Node newNode = new Node(data);
-			return newNode;
+            return new Node(data);
 		}
 
 		if (data <= root.data) {
@@ -21,8 +20,7 @@ public class InsertionInBST {
 	// Iteration
 	private Node insert2(Node root, int data) {
 		if (root == null) {
-			Node newNode = new Node(data);
-			return newNode;
+            return new Node(data);
 		}
 
 		Node temp = root;
@@ -42,6 +40,29 @@ public class InsertionInBST {
 					break;
 				}
 			}
+		}
+
+		return root;
+	}
+
+	// Iteration
+	private Node insert3(Node root, int val) {
+		if (root == null) {
+			return new Node(val);
+		}
+
+		Node curr = root;
+		Node prev = null;
+
+		while (curr != null) {
+			prev = curr;
+			curr = curr.data > val ? curr.left : curr.right;
+		}
+
+		if (prev.data > val) {
+			prev.left = new Node(val);
+		} else {
+			prev.right = new Node(val);
 		}
 
 		return root;

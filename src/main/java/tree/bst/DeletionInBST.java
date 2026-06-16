@@ -5,7 +5,7 @@ public class DeletionInBST {
 	// Recursion
 	public Node delete1(Node root, int data) {
 		if (root == null)
-			return root;
+			return null;
 
 		if (data < root.data)
 			root.left = delete1(root.left, data);
@@ -31,7 +31,7 @@ public class DeletionInBST {
 	// Iteration
 	public Node delete2(Node root, int data) {
 		if (root == null)
-			return root;
+			return null;
 
 		if (root.data == data) 
 			return delete2Helper(root);
@@ -77,5 +77,58 @@ public class DeletionInBST {
 			return root;
 		
 		return minNode(root.left);
+	}
+
+
+	// Latest
+	public Node deleteNode(Node root, int key) {
+		if (root == null) {
+			return null;
+		}
+		if (root.data == key) {
+			return deleteNodeHelper(root);
+		}
+
+		Node curr = root;
+		while (curr != null ) {
+			if (key <= curr.data) {
+				if (curr.left != null && curr.left.data == key) {
+					curr.left = deleteNodeHelper(curr.left);
+					break;
+				} else {
+					curr = curr.left;
+				}
+			} else {
+				if (curr.right != null && curr.right.data == key) {
+					curr.right = deleteNodeHelper(curr.right);
+					break;
+				} else {
+					curr = curr.right;
+				}
+			}
+		}
+
+		return root;
+	}
+
+	private Node deleteNodeHelper(Node root) {
+		if (root.left == null) {
+			return root.right;
+		}
+		if (root.right == null) {
+			return root.left;
+		}
+
+		Node rightChild = root.right;
+		Node lastRight = findLastRight(root.left);
+		lastRight.right = rightChild;
+		return root.left;
+	}
+
+	private Node findLastRight(Node node) {
+		if (node.right == null) {
+			return node;
+		}
+		return findLastRight(node.right);
 	}
 }
