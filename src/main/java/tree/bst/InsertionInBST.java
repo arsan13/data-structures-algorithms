@@ -3,12 +3,12 @@ package tree.bst;
 public class InsertionInBST {
 
 	// Recursion
-	private Node insert1(Node root, int data) {
+	private TreeNode insert1(TreeNode root, int data) {
 		if (root == null) {
-            return new Node(data);
+            return new TreeNode(data);
 		}
 
-		if (data <= root.data) {
+		if (data <= root.val) {
 			root.left = insert1(root.left, data);
 		} else {
 			root.right = insert1(root.right, data);
@@ -18,25 +18,25 @@ public class InsertionInBST {
 	}
 
 	// Iteration
-	private Node insert2(Node root, int data) {
+	private TreeNode insert2(TreeNode root, int data) {
 		if (root == null) {
-            return new Node(data);
+            return new TreeNode(data);
 		}
 
-		Node temp = root;
+		TreeNode temp = root;
 		while (temp != null) {
-			if (data <= temp.data) {
+			if (data <= temp.val) {
 				if (temp.left != null) {
 					temp = temp.left;
 				} else {
-					temp.left = new Node(data);
+					temp.left = new TreeNode(data);
 					break;
 				}
 			} else {
 				if (temp.right != null) {
 					temp = temp.right;
 				} else {
-					temp.right = new Node(data);
+					temp.right = new TreeNode(data);
 					break;
 				}
 			}
@@ -46,23 +46,23 @@ public class InsertionInBST {
 	}
 
 	// Iteration
-	private Node insert3(Node root, int val) {
+	private TreeNode insert3(TreeNode root, int val) {
 		if (root == null) {
-			return new Node(val);
+			return new TreeNode(val);
 		}
 
-		Node curr = root;
-		Node prev = null;
+		TreeNode curr = root;
+		TreeNode prev = null;
 
 		while (curr != null) {
 			prev = curr;
-			curr = curr.data > val ? curr.left : curr.right;
+			curr = curr.val > val ? curr.left : curr.right;
 		}
 
-		if (prev.data > val) {
-			prev.left = new Node(val);
+		if (prev.val > val) {
+			prev.left = new TreeNode(val);
 		} else {
-			prev.right = new Node(val);
+			prev.right = new TreeNode(val);
 		}
 
 		return root;

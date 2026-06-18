@@ -8,7 +8,7 @@ public class ConvertBTtoBST {
 	List<Integer> list;
 	int index;
 
-	public Node binaryTreeToBST(Node root) {
+	public TreeNode binaryTreeToBST(TreeNode root) {
 		list = new ArrayList<>();
 		index = 0;
 
@@ -19,21 +19,21 @@ public class ConvertBTtoBST {
 		return root;
 	}
 
-	private void inorder(Node root) {
+	private void inorder(TreeNode root) {
 		if (root == null)
 			return;
 
 		inorder(root.left);
-		list.add(root.data);
+		list.add(root.val);
 		inorder(root.right);
 	}
 
-	private void listToBST(Node root) {
+	private void listToBST(TreeNode root) {
 		if (root == null)
 			return;
 
 		listToBST(root.left);
-		root.data = list.get(index++);
+		root.val = list.get(index++);
 		listToBST(root.right);
 	}
 }

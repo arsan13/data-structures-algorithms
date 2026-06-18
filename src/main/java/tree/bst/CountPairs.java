@@ -9,7 +9,7 @@ import java.util.Set;
 //Given two BSTs, return the count of all pairs from both the BSTs whose sum is equal to x.
 public class CountPairs {
 
-	public int countPairs1(Node root1, Node root2, int x) {
+	public int countPairs1(TreeNode root1, TreeNode root2, int x) {
 		List<Integer> list1 = new ArrayList<>();
 		List<Integer> list2 = new ArrayList<>();
 		int count = 0;
@@ -39,7 +39,7 @@ public class CountPairs {
 		return count;
 	}
 
-	public int countPairs2(Node root1, Node root2, int x) {
+	public int countPairs2(TreeNode root1, TreeNode root2, int x) {
 		Set<Integer> set1 = new HashSet<>();
 		Set<Integer> set2 = new HashSet<>();
 		int count = 0;
@@ -55,12 +55,12 @@ public class CountPairs {
 		return count;
 	}
 
-	void inorder(Node root, Collection<Integer> list) {
+	void inorder(TreeNode root, Collection<Integer> list) {
 		if (root == null)
 			return;
 
 		inorder(root.left, list);
-		list.add(root.data);
+		list.add(root.val);
 		inorder(root.right, list);
 	}
 }

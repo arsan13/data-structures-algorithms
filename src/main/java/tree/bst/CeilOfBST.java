@@ -3,19 +3,19 @@ package tree.bst;
 public class CeilOfBST {
 
 	// Iteration
-	public int ceil1(Node root, int key) {
+	public int ceil1(TreeNode root, int key) {
 		int ceil = -1;
 
 		while (root != null) {
-			if (root.data == key) {
-				ceil = root.data;
+			if (root.val == key) {
+				ceil = root.val;
 				return ceil;
 			}
 
-			if (root.data < key) {
+			if (root.val < key) {
 				root = root.right;
 			} else {
-				ceil = root.data;
+				ceil = root.val;
 				root = root.left;
 			}
 		}
@@ -24,17 +24,17 @@ public class CeilOfBST {
 	}
 
 	// Recursion
-	public int ceil2(Node root, int key) {
+	public int ceil2(TreeNode root, int key) {
 		if (root == null)
 			return -1;
 
-		if (root.data == key)
-			return root.data;
+		if (root.val == key)
+			return root.val;
 
-		if (root.data < key)
+		if (root.val < key)
 			return ceil2(root.right, key);
 
 		int ceil = ceil2(root.left, key);
-		return ceil >= key ? ceil : root.data;
+		return ceil >= key ? ceil : root.val;
 	}
 }

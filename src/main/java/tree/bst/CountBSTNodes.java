@@ -28,15 +28,15 @@ public class CountBSTNodes {
     //     } 
     // }
     
-    int getCount(Node root,int l, int h) {
+    int getCount(TreeNode root, int l, int h) {
         
         if(root == null)
             return 0;
             
-        if(root.data >= l && root.data <= h)
+        if(root.val >= l && root.val <= h)
             return 1 + getCount(root.left, l, h) + getCount(root.right, l, h);
         
-        if(root.data < l)
+        if(root.val < l)
             return getCount(root.right, l, h);
         else
             return getCount(root.left, l, h);

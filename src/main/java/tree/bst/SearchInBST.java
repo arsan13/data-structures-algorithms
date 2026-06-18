@@ -2,7 +2,7 @@ package tree.bst;
 
 public class SearchInBST {
 
-    public Node search(Node root, int data) {
+    public TreeNode search(TreeNode root, int data) {
 //        while (root != null && root.data != data) {
 //            root = data < root.data ? root.left : root.right;
 //        }
@@ -11,11 +11,11 @@ public class SearchInBST {
         if(root==null) {
             return null;
         }
-        if(root.data == data) {
+        if(root.val == data) {
             return root;
         }
 
-        if (root.data > data) {
+        if (root.val > data) {
             return search(root.left, data);
         }
         return search(root.right, data);

@@ -3,10 +3,10 @@ package tree.bst;
 public class LowestCommonAncestor {
 	
 	// O(N) Auxiliary Space
-	public Node lcaRecursion(Node root, Node p, Node q) {
-		int parentVal = root.data;
-		int pVal = p.data;
-		int qVal = q.data;
+	public TreeNode lcaRecursion(TreeNode root, TreeNode p, TreeNode q) {
+		int parentVal = root.val;
+		int pVal = p.val;
+		int qVal = q.val;
 
 		if (pVal > parentVal && qVal > parentVal)
 			return lcaRecursion(root.right, p, q);
@@ -17,13 +17,13 @@ public class LowestCommonAncestor {
 	}
 
 	// O(1) Space
-	public Node lcaIteration(Node root, Node p, Node q) {
-		Node node = root;
-		int pVal = p.data;
-		int qVal = q.data;
+	public TreeNode lcaIteration(TreeNode root, TreeNode p, TreeNode q) {
+		TreeNode node = root;
+		int pVal = p.val;
+		int qVal = q.val;
 
 		while (node != null) {
-			int parentVal = node.data;
+			int parentVal = node.val;
 
 			if (pVal > parentVal && qVal > parentVal)
 				node = node.right;

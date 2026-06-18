@@ -5,14 +5,14 @@ import java.util.List;
 
 public class ConvertToBalancedBST {
 
-	public Node balancedBST(Node root) {
-		List<Node> list = new ArrayList<>();
+	public TreeNode balancedBST(TreeNode root) {
+		List<TreeNode> list = new ArrayList<>();
 		inorder(root, list);
 		
 		return listToBST(list, 0, list.size() - 1);
 	}
 
-	private void inorder(Node root, List<Node> list) {
+	private void inorder(TreeNode root, List<TreeNode> list) {
 		if (root == null)
 			return;
 
@@ -22,12 +22,12 @@ public class ConvertToBalancedBST {
 	}
 	
 	// Build tree from inorder traversal
-	private Node listToBST(List<Node> list, int start, int end) {
+	private TreeNode listToBST(List<TreeNode> list, int start, int end) {
 		if(start > end)
 			return null;
 		
 		int mid = (start + end) / 2;
-		Node node = list.get(mid);
+		TreeNode node = list.get(mid);
 		
 		node.left = listToBST(list, start, mid - 1);
 		node.right = listToBST(list, mid + 1, end);

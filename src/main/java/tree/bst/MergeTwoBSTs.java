@@ -6,7 +6,7 @@ import java.util.List;
 //Given two BSTs, return list of elements of both BSTs in sorted form.
 public class MergeTwoBSTs {
 
-	public List<Integer> merge(Node root1, Node root2) {
+	public List<Integer> merge(TreeNode root1, TreeNode root2) {
 		List<Integer> list1 = new ArrayList<>();
 		List<Integer> list2 = new ArrayList<>();
 
@@ -16,12 +16,12 @@ public class MergeTwoBSTs {
 		return mergeLists(list1, list2);
 	}
 
-	private void inorder(Node root, List<Integer> list) {
+	private void inorder(TreeNode root, List<Integer> list) {
 		if (root == null)
 			return;
 
 		inorder(root.left, list);
-		list.add(root.data);
+		list.add(root.val);
 		inorder(root.right, list);
 	}
 

@@ -5,9 +5,9 @@ package tree.bst;
  */
 public class FlattenBstToSortedLinkedList {
 
-	public Node flatten(Node root) {
-		Node dummy = new Node(-1);
-		Node prev = dummy;
+	public TreeNode flatten(TreeNode root) {
+		TreeNode dummy = new TreeNode(-1);
+		TreeNode prev = dummy;
 
 		inOrder(root, prev);
 
@@ -16,7 +16,7 @@ public class FlattenBstToSortedLinkedList {
 		return dummy.right;
 	}
 
-	private void inOrder(Node curr, Node prev) {
+	private void inOrder(TreeNode curr, TreeNode prev) {
 		if (curr == null)
 			return;
 

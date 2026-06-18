@@ -3,34 +3,34 @@ package tree.bst;
 // Check if a binary tree is a BST. 
 public class ValidateTree {
 
-	public boolean isBST(Node root) {
+	public boolean isBST(TreeNode root) {
 		return isBST(root, null, null);
 	}
 
-	private boolean isBST(Node root, Integer min, Integer max) {
+	private boolean isBST(TreeNode root, Integer min, Integer max) {
 		if (root == null)
 			return true;
 
-		if ((min != null && root.data <= min) || (max != null && root.data >= max))
+		if ((min != null && root.val <= min) || (max != null && root.val >= max))
 			return false;
 
-		return isBST(root.left, min, root.data) && isBST(root.right, root.data, max);
+		return isBST(root.left, min, root.val) && isBST(root.right, root.val, max);
 	}
 
-	public boolean isValidBST(Node root) {
+	public boolean isValidBST(TreeNode root) {
 		return isValidBST(root, Long.MIN_VALUE, Long.MAX_VALUE);
 	}
 
-	private boolean isValidBST(Node root, long min, long max) {
+	private boolean isValidBST(TreeNode root, long min, long max) {
 		if (root == null) {
 			return true;
 		}
 
-		if (root.data <= min || root.data >= max) {
+		if (root.val <= min || root.val >= max) {
 			return false;
 		}
 
-		return isValidBST(root.left, min, root.data) &&
-				isValidBST(root.right, root.data, max);
+		return isValidBST(root.left, min, root.val) &&
+				isValidBST(root.right, root.val, max);
 	}
 }

@@ -3,14 +3,14 @@ package tree.bst;
 public class DeletionInBST {
 
 	// Recursion
-	public Node delete1(Node root, int data) {
+	public TreeNode delete1(TreeNode root, int data) {
 		if (root == null)
 			return null;
 
-		if (data < root.data)
+		if (data < root.val)
 			root.left = delete1(root.left, data);
 
-		else if (data > root.data)
+		else if (data > root.val)
 			root.right = delete1(root.right, data);
 
 		else {
@@ -21,32 +21,32 @@ public class DeletionInBST {
 			if (root.right == null)
 				return root.left;
 
-			root.data = minNode(root.right).data;
-			root.right = delete1(root.right, root.data);
+			root.val = minNode(root.right).val;
+			root.right = delete1(root.right, root.val);
 		}
 
 		return root;
 	}
 
 	// Iteration
-	public Node delete2(Node root, int data) {
+	public TreeNode delete2(TreeNode root, int data) {
 		if (root == null)
 			return null;
 
-		if (root.data == data) 
+		if (root.val == data)
 			return delete2Helper(root);
 
-		Node temp = root;
+		TreeNode temp = root;
 		while (temp != null) {
-			if (data <= temp.data) {
-				if (temp.left != null && temp.left.data == data) {
+			if (data <= temp.val) {
+				if (temp.left != null && temp.left.val == data) {
 					temp.left = delete2Helper(temp.left);
 					break;
 				} else {
 					temp = temp.left;
 				}
 			} else {
-				if (temp.right != null && temp.right.data == data) {
+				if (temp.right != null && temp.right.val == data) {
 					temp.right = delete2Helper(temp.right);
 					break;
 				} else {
@@ -58,7 +58,7 @@ public class DeletionInBST {
 		return root;
 	}
 
-	private Node delete2Helper(Node root) {
+	private TreeNode delete2Helper(TreeNode root) {
 		if (root.left == null && root.right == null)
 			return null;
 		if (root.left == null)
@@ -66,13 +66,13 @@ public class DeletionInBST {
 		if (root.right == null)
 			return root.left;
 		
-		Node leftChild = root.left;
-		Node minNode = minNode(root.right);
+		TreeNode leftChild = root.left;
+		TreeNode minNode = minNode(root.right);
 		minNode.left = leftChild;
 		return root.right;
 	}
 
-	private Node minNode(Node root) {
+	private TreeNode minNode(TreeNode root) {
 		if (root.left == null)
 			return root;
 		
@@ -81,25 +81,25 @@ public class DeletionInBST {
 
 
 	// Latest
-	public Node deleteNode(Node root, int key) {
+	public TreeNode deleteNode(TreeNode root, int key) {
 		if (root == null) {
 			return null;
 		}
-		if (root.data == key) {
+		if (root.val == key) {
 			return deleteNodeHelper(root);
 		}
 
-		Node curr = root;
+		TreeNode curr = root;
 		while (curr != null ) {
-			if (key <= curr.data) {
-				if (curr.left != null && curr.left.data == key) {
+			if (key <= curr.val) {
+				if (curr.left != null && curr.left.val == key) {
 					curr.left = deleteNodeHelper(curr.left);
 					break;
 				} else {
 					curr = curr.left;
 				}
 			} else {
-				if (curr.right != null && curr.right.data == key) {
+				if (curr.right != null && curr.right.val == key) {
 					curr.right = deleteNodeHelper(curr.right);
 					break;
 				} else {
@@ -111,7 +111,7 @@ public class DeletionInBST {
 		return root;
 	}
 
-	private Node deleteNodeHelper(Node root) {
+	private TreeNode deleteNodeHelper(TreeNode root) {
 		if (root.left == null) {
 			return root.right;
 		}
@@ -119,13 +119,13 @@ public class DeletionInBST {
 			return root.left;
 		}
 
-		Node rightChild = root.right;
-		Node lastRight = findLastRight(root.left);
+		TreeNode rightChild = root.right;
+		TreeNode lastRight = findLastRight(root.left);
 		lastRight.right = rightChild;
 		return root.left;
 	}
 
-	private Node findLastRight(Node node) {
+	private TreeNode findLastRight(TreeNode node) {
 		if (node.right == null) {
 			return node;
 		}
