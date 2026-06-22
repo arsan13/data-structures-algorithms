@@ -3,7 +3,7 @@ Various algorithms and GFG, Leetcode problems are implemented in Java.
 
 ![img.png](img.png)
 
-Sheet: https://takeuforward.org/dsa/strivers-a2z-sheet-learn-dsa-a-to-z
+Sheet: [Link](https://takeuforward.org/dsa/strivers-a2z-sheet-learn-dsa-a-to-z)
 
 - Bit Manipulation: [Reference](https://takeuforward.org/blogs/bit-manipulation?page=1)
 - Arrays [Playlist](https://www.youtube.com/playlist?list=PLgUwDviBIf0rENwdL0nEH0uGom9no0nyB)
