@@ -3,16 +3,24 @@ package tree.bst;
 import java.util.Stack;
 
 public class BSTIterator {
-    Stack<TreeNode> stack;
+    private final Stack<TreeNode> stack;
+    private final boolean isReverse;
 
-    public BSTIterator(TreeNode root) {
+    public BSTIterator(TreeNode root, boolean isReverse) {
         stack = new Stack<>();
+        this.isReverse = isReverse;
         pushAll(root);
     }
 
     public int next() {
         TreeNode node = stack.pop();
-        pushAll(node.right);
+
+        if (isReverse) {
+            pushAll(node.left);
+        } else {
+            pushAll(node.right);
+        }
+
         return node.val;
     }
 
@@ -23,7 +31,7 @@ public class BSTIterator {
     private void pushAll(TreeNode root) {
         while (root != null) {
             stack.push(root);
-            root = root.left;
+            root = isReverse ? root.right : root.left;
         }
     }
 }
