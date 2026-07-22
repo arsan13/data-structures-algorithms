@@ -41,11 +41,24 @@ public class NumberOfProvinces {
         return adjList;
     }
 
+    // DFS for adjacency list
     private void dfs(int node, List<List<Integer>> adjList, boolean[] visited) {
         visited[node] = true;
         for (int neighbor : adjList.get(node)) {
             if (!visited[neighbor]) {
                 dfs(neighbor, adjList, visited);
+            }
+        }
+    }
+
+
+    // DFS for adjacency matrix
+    private void dfs(int src, int[][] matrix, boolean[] visited) {
+        visited[src] = true;
+
+        for(int j = 0; j < matrix[src].length; j++) {
+            if(matrix[src][j] == 1 && !visited[j]) {
+                dfs(j, matrix, visited);
             }
         }
     }
