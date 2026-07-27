@@ -8,73 +8,78 @@ import java.util.Queue;
 //If it is impossible to rot every orange then simply return -1.
 public class RottenOranges {
 
-	private record Pair(int row, int col) {
-	}
+    private static int[] dx = {1, -1, 0, 0};
+    private static int[] dy = {0, 0, -1, 1};
 
-	private static int minTime(int[][] grid) {
-		int n = grid.length;
-		int m = grid[0].length;
+    public static int  orangesRotting(int[][] grid) {
+        int n = grid.length;
+        int m = grid[0].length;
 
-		int totalOranges = 0;
-		Queue<Pair> queue = new LinkedList<>();
+        int totalOranges = 0;
+        Queue<Pair> queue = new LinkedList<>();
 
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < m; j++) {
-				if (grid[i][j] == 2) {
-					queue.offer(new Pair(i, j));
-				}
-				if (grid[i][j] != 0) {
-					totalOranges++;
-				}
-			}
-		}
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (grid[i][j] == 2) {
+                    queue.offer(new Pair(i, j));
+                }
+                if (grid[i][j] != 0) {
+                    totalOranges++;
+                }
+            }
+        }
 
-		if (totalOranges == 0) {
-			return 0;
-		}
+        if (totalOranges == 0) {
+            return 0;
+        }
 
-		int time = 0;
-		int rottenOranges = 0;
-		int[] dx = { 1, -1, 0, 0 };
-		int[] dy = { 0, 0, -1, 1 };
+        int time = 0;
+        int rottenOranges = 0;
+        while (!queue.isEmpty()) {
+            int size = queue.size(); // current number of rotten oranges
+            rottenOranges += size;
 
-		while (!queue.isEmpty()) {
-			int size = queue.size(); // current number of rotten oranges
-			rottenOranges += size;
+            rotAdjacentOranges(grid, size, queue, n, m);
 
-			for (int i = 0; i < size; i++) { // rot adjacent oranges of all rotten oranges one by one.
-				Pair point = queue.poll();
+            if (!queue.isEmpty()) {
+                time++;
+            }
+        }
 
-				for (int j = 0; j < 4; j++) { // travel adjacent sides(up,down,left, right)
-					int x = point.row + dx[j];
-					int y = point.col + dy[j];
+        return totalOranges == rottenOranges ? time : -1;
+    }
 
-					if (x < 0 || x >= n || y < 0 || y >= m || grid[x][y] == 0 || grid[x][y] == 2)
-						continue;
+    private static void rotAdjacentOranges(int[][] grid, int size, Queue<Pair> queue, int n, int m) {
+        for (int i = 0; i < size; i++) { // rot adjacent oranges of all rotten oranges one by one.
+            Pair pair = queue.poll();
 
-					grid[x][y] = 2;
-					queue.offer(new Pair(x, y));
-				}
-			}
+            for (int j = 0; j < 4; j++) { // travel adjacent sides(up,down,left, right)
+                int x = pair.row + dx[j];
+                int y = pair.col + dy[j];
 
-			if (!queue.isEmpty()) {
-				time++;
-			}
-		}
+                if (x < 0 || x >= n || y < 0 || y >= m || grid[x][y] == 0 || grid[x][y] == 2) {
+                    continue;
+                }
 
-		return totalOranges == rottenOranges ? time : -1;
-	}
+                grid[x][y] = 2;
+                queue.offer(new Pair(x, y));
+            }
+        }
+    }
 
-	public static void main(String[] args) {
+    private record Pair(int row, int col) {
+    }
+
+    public static void main(String[] args) {
 
 //		0: Empty cell
 //		1: Cells have fresh oranges
-//		2: Cells have rotten oranges	
-		int grid[][] = { { 2, 1, 0, 2, 1 }, 
-						 { 1, 0, 1, 2, 1 }, 
-						 { 1, 0, 0, 2, 1 } };
+//		2: Cells have rotten oranges
+        int grid[][] = {{2, 1, 0, 2, 1},
+                {1, 0, 1, 2, 1},
+                {1, 0, 0, 2, 1}};
 
-		System.out.println(minTime(grid));
+        System.out.println(orangesRotting(grid));
 
-	}
+    }
 }
