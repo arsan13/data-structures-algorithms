@@ -8,16 +8,20 @@ import java.util.Queue;
 //If it is impossible to rot every orange then simply return -1.
 public class RottenOranges {
 
-	private static int minTime(int[][] grid) {
-		Queue<int[]> queue = new LinkedList<>();
-		int totalOranges = 0;
+	private record Pair(int row, int col) {
+	}
 
+	private static int minTime(int[][] grid) {
 		int n = grid.length;
 		int m = grid[0].length;
+
+		int totalOranges = 0;
+		Queue<Pair> queue = new LinkedList<>();
+
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < m; j++) {
 				if (grid[i][j] == 2) {
-					queue.offer(new int[] { i, j });
+					queue.offer(new Pair(i, j));
 				}
 				if (grid[i][j] != 0) {
 					totalOranges++;
@@ -25,8 +29,9 @@ public class RottenOranges {
 			}
 		}
 
-		if (totalOranges == 0)
+		if (totalOranges == 0) {
 			return 0;
+		}
 
 		int time = 0;
 		int rottenOranges = 0;
@@ -38,17 +43,17 @@ public class RottenOranges {
 			rottenOranges += size;
 
 			for (int i = 0; i < size; i++) { // rot adjacent oranges of all rotten oranges one by one.
-				int[] point = queue.poll();
+				Pair point = queue.poll();
 
 				for (int j = 0; j < 4; j++) { // travel adjacent sides(up,down,left, right)
-					int x = point[0] + dx[j];
-					int y = point[1] + dy[j];
+					int x = point.row + dx[j];
+					int y = point.col + dy[j];
 
 					if (x < 0 || x >= n || y < 0 || y >= m || grid[x][y] == 0 || grid[x][y] == 2)
 						continue;
 
 					grid[x][y] = 2;
-					queue.offer(new int[] { x, y });
+					queue.offer(new Pair(x, y));
 				}
 			}
 
