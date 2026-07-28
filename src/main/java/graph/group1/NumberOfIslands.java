@@ -1,4 +1,4 @@
-package graph;
+package graph.group1;
 
 
 public class NumberOfIslands {
