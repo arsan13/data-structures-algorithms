@@ -1,10 +1,10 @@
-package graph;
+package graph.bipartite;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class BipartiteGraph
+public class BipartiteGraphOld
 {
     private boolean dfsCheck(ArrayList<ArrayList<Integer>> adj, int u, int[] color) {
 		
@@ -98,7 +98,7 @@ public class BipartiteGraph
 		adj.get(6).add(1);
 		
 			
-		BipartiteGraph obj = new BipartiteGraph(); 
+		BipartiteGraphOld obj = new BipartiteGraphOld();
 		
 		if(obj.checkBipartite(adj, n)) 
 			System.out.println("Yes Bipartite"); 
