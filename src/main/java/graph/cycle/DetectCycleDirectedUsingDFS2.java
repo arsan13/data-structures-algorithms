@@ -3,41 +3,39 @@ package graph.cycle;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DetectCycleDirectedUsingDFS {
+public class DetectCycleDirectedUsingDFS2 {
 
     // If you visit a vertex that's already visited AND it's on same path → cycle
     public boolean isCycle(int v, int[][] edges) {
         List<List<Integer>> adjList = getAdjList(v, edges);
 
-        boolean[] visited = new boolean[v];
-        boolean[] visitedPath = new boolean[v];
+        int[] status = new int[v];
 
         // For loop because of connected components case
         for (int i = 0; i < v; i++) {
-            if (!visited[i] && dfs(i, adjList, visited, visitedPath)) {
+            if (status[i] == 0 && dfs(i, adjList, status)) {
                 return true;
             }
-
         }
 
         return false;
     }
 
-    private boolean dfs(int src, List<List<Integer>> adjList, boolean[] visited, boolean[] visitedPath) {
-        visited[src] = true;
-        visitedPath[src] = true;
+    private boolean dfs(int src, List<List<Integer>> adjList, int[] status) {
+        status[src] = 2;
 
         for (int neighbor : adjList.get(src)) {
-            if (!visited[neighbor]) {
-                if (dfs(neighbor, adjList, visited, visitedPath)) {
+            if (status[neighbor] == 1) {
+                if (dfs(neighbor, adjList, status)) {
                     return true;
                 }
-            } else if (visitedPath[neighbor]) {
+            } else if (status[neighbor] == 2) {
                 return true;
             }
+
         }
 
-        visitedPath[src] = false;
+        status[src] = 1;
         return false;
     }
 

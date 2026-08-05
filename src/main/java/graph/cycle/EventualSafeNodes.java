@@ -10,8 +10,7 @@ Return an array containing all the safe nodes of the graph. The answer should be
 * */
 public class EventualSafeNodes {
 
-    // Leetcode: Time Limit Exceeded
-    // Slight modification of detect cycle in directed graph using dfs
+    // Slight modification of detect cycle in directed graph using dfs problem
     // Any node part of cycle or leading to the cycle are not safe nodes
     public List<Integer> eventualSafeNodes(int[][] graph) {
         int v = graph.length;
@@ -50,7 +49,7 @@ public class EventualSafeNodes {
         }
 
         safeNodes[src] = true;
-        visited[src] = false;
+        visitedPath[src] = false;
         return false;
     }
 }
