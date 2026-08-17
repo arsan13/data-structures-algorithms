@@ -8,7 +8,7 @@ There is a directed graph of n nodes with each node labeled from 0 to n - 1. The
 A node is a terminal node if there are no outgoing edges. A node is a safe node if every possible path starting from that node leads to a terminal node (or another safe node).
 Return an array containing all the safe nodes of the graph. The answer should be sorted in ascending order.
 * */
-public class EventualSafeNodes {
+public class EventualSafeNodesDFS {
 
     // Slight modification of detect cycle in directed graph using dfs problem
     // Any node part of cycle or leading to the cycle are not safe nodes
