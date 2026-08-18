@@ -5,7 +5,10 @@ import java.util.ArrayList;
 //Given a sorted dictionary of an alien language having N words and k starting alphabets of standard dictionary. 
 //Find the order of characters in the alien language.
 public class AlienDictionary {
-	
+
+    // Order is not possible for two cases:
+    // 1. When larger string comes before smaller string and every character matches. Eg. abcd, abc
+    // 2. Cyclic order. Eg. abc, bat, ade
 	public static String findOrder(String [] dict, int n, int k)
     {
         // build graph
