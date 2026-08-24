@@ -5,16 +5,8 @@ import java.util.Arrays;
 import java.util.Stack;
 
 public class ShortestPathInDAG {
-	
-	static class Pair {
-		int vertex;
-		int weight;
-		
-		public Pair(int vertex, int weight) {
-			this.vertex = vertex;
-			this.weight = weight;
-		}
-	}
+
+	private record Pair(int vertex, int weight) {}
 	
 	private static void shortestPath(int src, ArrayList<ArrayList<Pair>> adj, int n) {
 		
