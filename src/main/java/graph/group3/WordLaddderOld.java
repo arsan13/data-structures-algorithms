@@ -1,12 +1,11 @@
-package graph;
+package graph.group3;
 
 import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 
-public class WordLaddder {
+public class WordLaddderOld {
 	
 	public static int ladderLength(String beginWord, String endWord, String[] wordList) {
         
