@@ -20,7 +20,7 @@ public class ShortestDistance {
             int node = queue.poll();
 
             for (int neighbour : adjList.get(node)) {
-                if (dist[node] + 1 < dist[neighbour]) {
+                if (dist[neighbour] ==  Integer.MAX_VALUE) {
                     dist[neighbour] = dist[node] + 1;
                     queue.add(neighbour);
                 }
