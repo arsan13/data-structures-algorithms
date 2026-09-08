@@ -1,4 +1,4 @@
-package graph.algorithms.latest;
+package graph.group4;
 
 import java.util.Arrays;
 import java.util.Comparator;
