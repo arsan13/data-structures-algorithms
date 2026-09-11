@@ -1,4 +1,4 @@
-package graph.group4;
+package graph.shortest;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package graph.group4;
+package graph.shortest;
 
 import java.util.Arrays;
 import java.util.Comparator;
