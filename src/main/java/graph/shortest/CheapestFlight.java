@@ -28,7 +28,7 @@ public class CheapestFlight {
         int stops = 0;
         while (!queue.isEmpty()) {
             if (stops > k) {
-                continue;
+                break;
             }
 
             int size = queue.size();
