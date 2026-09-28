@@ -80,9 +80,12 @@
 ---
 
 ### 4. Minimum Spanning Tree (MST)
+- A spanning tree of a graph with `N` nodes has exactly `N - 1` edges and connects all nodes together, with no cycles
+- A graph can have multiple spanning trees; the MST is the one with the least sum of edge weights
+- Below are the algorithms to find an MST
 
 #### Prim’s Algorithm
-- Uses Min Heap
+- Uses Min Heap/
 
 #### Kruskal’s Algorithm
 - Uses **Union-Find**
