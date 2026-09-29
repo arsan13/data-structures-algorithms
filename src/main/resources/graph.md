@@ -85,7 +85,7 @@
 - Below are the algorithms to find an MST
 
 #### Prim’s Algorithm
-- Uses Min Heap/
+- Uses Min Heap
 
 #### Kruskal’s Algorithm
 - Uses **Union-Find**
