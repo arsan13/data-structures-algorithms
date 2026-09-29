@@ -40,7 +40,7 @@ public class KruskalAlgorithm {
 		
 		if(rank[u] < rank[v]) 
 			parent[u] = v;
-		else if(rank[v] > rank[u])
+		else if(rank[u] > rank[v])
 			parent[v] = u;
 		else {
 			parent[v] = u;
