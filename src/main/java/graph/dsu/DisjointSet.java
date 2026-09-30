@@ -20,20 +20,14 @@ public final class DisjointSet {
             throw new IllegalArgumentException("n must be >= 1");
         }
         this.n = n;
-        this.parent = new int[n + 1];
-        this.rank = new int[n + 1];
-        this.size = new int[n + 1];
+        this.parent = new int[n];
+        this.rank = new int[n];
+        this.size = new int[n];
 
         for (int i = 0; i < n; i++) {
             parent[i] = i;   // each element is its own parent initially
             rank[i] = 0;     // all trees start with rank 0
             size[i] = 1;     // each set has size 1 initially
-        }
-    }
-
-    private void validateNode(int node) {
-        if (node < 1 || node > n) {
-            throw new IllegalArgumentException("Node out of range: " + node + " (valid range: 1.." + n + ")");
         }
     }
 
@@ -98,6 +92,22 @@ public final class DisjointSet {
      */
     public boolean isConnected(int u, int v) {
         return findRoot(u) == findRoot(v);
+    }
+
+    public int countComponents() {
+        int count = 0;
+        for(int i = 0; i < n; i++){
+            if (parent[i] == i) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private void validateNode(int node) {
+        if (node < 0 || node >= n) {
+            throw new IllegalArgumentException("Node out of range: " + node + " (valid range: 0.." + (n - 1) + ")");
+        }
     }
 
     public static void main(String[] args) {
