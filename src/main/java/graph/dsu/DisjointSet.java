@@ -104,6 +104,11 @@ public final class DisjointSet {
         return count;
     }
 
+    public int getSize(int node) {
+        validateNode(node);
+        return size[node];
+    }
+
     private void validateNode(int node) {
         if (node < 0 || node >= n) {
             throw new IllegalArgumentException("Node out of range: " + node + " (valid range: 0.." + (n - 1) + ")");

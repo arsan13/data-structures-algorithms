@@ -22,10 +22,6 @@ public class NumberOfIslands2 {
     private static final int[] dRow = new int[]{-1, 1, 0, 0};
     private static final int[] dCol = new int[]{0, 0, -1, 1};
 
-    private static boolean isValid(int newRow, int newCol, int n, int m) {
-        return newRow >= 0 && newRow < n && newCol >= 0 && newCol < m;
-    }
-
     // Intuition: a new land cell starts as its own island (count++). Each time it touches a land
     // neighbor in a *different* component, two islands merge into one (count--).
     // Time: O(k * alpha(n*m)), Space: O(n*m)
@@ -71,6 +67,10 @@ public class NumberOfIslands2 {
         }
 
         return res;
+    }
+
+    private boolean isValid(int newRow, int newCol, int n, int m) {
+        return newRow >= 0 && newRow < n && newCol >= 0 && newCol < m;
     }
 
     public static void main(String[] args) {
